@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iBXv24jzAIazQiYLajQNT5LaWV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api/routes" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\routes" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\controllers" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\controllers\dovidnyky" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\models" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\controllers" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="" />
+      <created>1601382186639</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601382186639</updated>
+      <workItem from="1601382187794" duration="2529000" />
+      <workItem from="1601385715862" duration="7573000" />
+      <workItem from="1601470898039" duration="7770000" />
+      <workItem from="1601541112951" duration="11675000" />
+      <workItem from="1601576104737" duration="1475000" />
+      <workItem from="1601636032255" duration="14087000" />
+      <workItem from="1601896229393" duration="392000" />
+      <workItem from="1601896626971" duration="384000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601571524091">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601571524091" />
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1601396118048">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601396118048" />
+    <state x="1096" y="242" key="run.anything.popup" timestamp="1601647174459">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1096" y="242" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601647174459" />
+    <state x="1096" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601572303604" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601574568507">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601574568507" />
+  </component>
+</project>

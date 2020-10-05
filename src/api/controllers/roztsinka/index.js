@@ -1,0 +1,97 @@
+const {Roztsinka} = require('../../models');
+
+module.exports = {
+    createRoztsinka: async (req, res) => {
+        try {
+            const {
+                startDate,
+                endDate,
+                price,
+                name,
+                operationId,
+                gatynok,
+                machineId,
+                typeId,
+                colorId,
+                asortument,
+                classId,
+                seasonId,
+                imageId,
+                sizeId,
+                articleId,
+                changesId,
+            } = req.body;
+            const roztsinka = await Roztsinka.create({
+                startDate,
+                endDate,
+                price,
+                name,
+                operationId,
+                gatynok,
+                machineId,
+                typeId,
+                colorId,
+                asortument,
+                classId,
+                seasonId,
+                imageId,
+                sizeId,
+                articleId,
+                changesId,
+                deletedAt: null
+            })
+            res.send(roztsinka);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400);
+        }
+    },
+    updateRoztsinka: async (req, res) => {
+        try {
+            const {
+                startDate,
+                endDate,
+                price,
+                name,
+                operationId,
+                gatynok,
+                machineId,
+                typeId,
+                colorId,
+                asortument,
+                classId,
+                seasonId,
+                imageId,
+                sizeId,
+                articleId,
+                changesId,
+            } = req.body;
+            const {id} = req.params;
+
+            const updated = await Roztsinka.findByIdAndUpdate(id, {
+                startDate,
+                endDate,
+                price,
+                name,
+                operationId,
+                gatynok,
+                machineId,
+                typeId,
+                colorId,
+                asortument,
+                classId,
+                seasonId,
+                imageId,
+                sizeId,
+                articleId,
+                changesId,
+                updatedAt: Date.now(),
+                deletedAt: null
+            })
+            res.send(updated);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400);
+        }
+    }
+}
