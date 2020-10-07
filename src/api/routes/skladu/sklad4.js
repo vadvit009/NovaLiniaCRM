@@ -1,20 +1,21 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-//
-// const Sklad4Schema = new Schema(
-//     {
-//         packId: {type: mongoose.ObjectId, ref: "Machine"},
-//         date: Date,
-//
-//         mishokId: {type: mongoose.ObjectId, ref: "Mishku"},
-//         changesId: {type: mongoose.ObjectId, ref: "Users"},
-//         deletedAt: Date
-//     },
-//     {
-//         timestamps: true
-//     }
-// );
-//
-// const Sklad4 = mongoose.model("Sklad4", Sklad4Schema, "sklad4");
-//
-// module.exports = {Sklad4};
+const app = require("express").Router();
+const {Skladu} = require('../../models')
+const {
+    verifyUserToken
+} = require("../../middleware/jwtAuth");
+
+const {Sklad4} = require("../../controllers/skladu");
+const {readHelper, readByIdHelper, deleteHelper} = require("../../utils/CRUDhelper");
+const {roleAccess} = require('../../utils/RoleHelper');
+
+app.get("/sklad4", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Skladu.Sklad4));
+
+app.get("/sklad4/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Skladu.Sklad4));
+
+app.post("/sklad4", verifyUserToken, roleAccess(["String2", "String1"]), Sklad4.pruxodSklad4);
+
+app.patch("/sklad4/:id", verifyUserToken, roleAccess(["String2", "String1"]), Sklad4.updateSklad4);
+
+app.delete("/sklad4/:id", verifyUserToken, roleAccess(["String2", "String1"]), deleteHelper(Skladu.Sklad4));
+
+module.exports = app;

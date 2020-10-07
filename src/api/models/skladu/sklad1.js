@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const Sklad1Schema = new Schema(
     {
-        vyazalId: {type: mongoose.ObjectId, ref: "Workers"},
-        masterId: {type: mongoose.ObjectId, ref: "Workers"},
+        vyazalId: {type: mongoose.ObjectId, ref: "Worker"},
+        masterId: {type: mongoose.ObjectId, ref: "Worker"},
         machineId: {type: mongoose.ObjectId, ref: "Machine"},
-        date_prizod: Date,
+        date_prixod: Date,
         date_rozsxodu: Date,
 
         mishok: {type: mongoose.ObjectId, ref: "Mishku"},

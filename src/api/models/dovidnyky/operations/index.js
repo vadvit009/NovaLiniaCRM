@@ -12,6 +12,6 @@ const OperationSchema = new Schema(
     }
 );
 
-const Operations = mongoose.model("Operations", OperationSchema, "prodColor");
+const Operations = mongoose.model("Operations", OperationSchema, "operations");
 
 module.exports = {Operations};

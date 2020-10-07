@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="" />
+    <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/users/delete.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/users/delete.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/users/patch.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/users/patch.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/machines/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/machines/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/operations/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/operations/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/production/asortument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/production/asortument.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/skladu/sklad1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/skladu/sklad3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/skladu/sklad4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/production/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/production/type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/workers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/workers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/utils/RoleHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/utils/RoleHelper.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +37,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1iBXv24jzAIazQiYLajQNT5LaWV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,7 +86,9 @@
       <workItem from="1601576104737" duration="1475000" />
       <workItem from="1601636032255" duration="14087000" />
       <workItem from="1601896229393" duration="392000" />
-      <workItem from="1601896626971" duration="384000" />
+      <workItem from="1601896626971" duration="7942000" />
+      <workItem from="1601999789941" duration="7590000" />
+      <workItem from="1602011274402" duration="1340000" />
     </task>
     <servers />
   </component>
@@ -69,18 +100,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601571524091" />
-    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1601396118048">
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1602004992798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601396118048" />
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602004992798" />
     <state x="1096" y="242" key="run.anything.popup" timestamp="1601647174459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1096" y="242" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1601647174459" />
     <state x="1096" y="242" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601572303604" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601574568507">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602007237354">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1601574568507" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602007237354" />
   </component>
 </project>

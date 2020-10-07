@@ -12,6 +12,6 @@ const AsortumentSchema = new Schema(
     }
 );
 
-const ProdAsortument = mongoose.model("ProdAsortument", AsortumentSchema, "prod_asortumnet");
+const ProdAsortument = mongoose.model("ProdAsortument", AsortumentSchema, "prod_asortument");
 
 module.exports = {ProdAsortument};

@@ -11,7 +11,6 @@ module.exports = {
                 vyazalId,
                 masterId,
                 machineId,
-                date_prizod,
                 gatynok1,
                 gatynok2,
                 gatynok3,
@@ -22,6 +21,7 @@ module.exports = {
                 sizeId,
                 classId,
                 articleId,
+                date_prixod,
             } = req.body;
 
             const mishok = await Mishku.create({
@@ -32,15 +32,18 @@ module.exports = {
                 sizeId,
                 classId,
                 articleId,
+                date_prixod,
                 gatynok1,
                 gatynok2,
                 gatynok3,
-            })
+            });
+
             const sklad1 = await Sklad1.create({
                 vyazalId,
                 masterId,
                 machineId,
-                date_prizod,
+                date_prixod,
+                date_rozsxodu: null,
                 mishok: mishok._id,
                 changesId: user._id,
                 deletedAt: null
@@ -59,7 +62,7 @@ module.exports = {
                 vyazalId,
                 masterId,
                 machineId,
-                date_prizod,
+                date_prixod,
                 gatynok1,
                 gatynok2,
                 gatynok3,
@@ -77,7 +80,7 @@ module.exports = {
                 vyazalId,
                 masterId,
                 machineId,
-                date_prizod,
+                date_prixod,
                 gatynok1,
                 gatynok2,
                 gatynok3,
@@ -188,5 +191,42 @@ module.exports = {
             .populate('packId')
             .populate('changesId')
         res.send(rozxidSklad4)
+    },
+
+    getSklad: async (req, res) => {
+        const sklad1 = await Sklad1.find({})
+            .populate({
+                path: 'mishok',
+                populate: {path: "asortumentId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "imageId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "colorId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "typeId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "sizeId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "classId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "articleId", select: "name -_id"}
+            })
+            .populate('vyazalId')
+            .populate('masterId')
+            .populate('machineId')
+            .populate('changesId')
+        res.send(sklad1);
     }
 }

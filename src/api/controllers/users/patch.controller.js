@@ -21,9 +21,9 @@ module.exports = {
         // .catch((err) => err && res.sendStatus(409));
     },
 
-    restoreUser: async (req, res) => {
+    restoreUser: (req, res) => {
         const {id} = req.params;
-        return await User.findByIdAndUpdate(id, {deletedAt: null})
+        return User.findByIdAndUpdate(id, {deletedAt: null})
             .then((user) => res.json(user))
             .catch((err) => res.send(err));
     },

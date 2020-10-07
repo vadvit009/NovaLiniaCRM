@@ -25,6 +25,5 @@ module.exports = {
     MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor,
     PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor,
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass,
-    Sklad1,
-    // Sklad2, Sklad3, Sklad4
+    Sklad1,// Sklad2, Sklad3, Sklad4
 }

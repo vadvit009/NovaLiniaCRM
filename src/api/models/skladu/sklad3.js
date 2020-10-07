@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const Sklad3Schema = new Schema(
     {
         formId: {type: mongoose.ObjectId, ref: "Machine"},
-        date_prizod: Date,
+        date_prixod: Date,
         date_rozsxodu: Date,
 
         mishokId: {type: mongoose.ObjectId, ref: "Mishku"},

@@ -1,8 +1,14 @@
 const createHelper = (model) => {
     return async (req, res) => {
-        const {name} = req.body;
-        const created = await model.create(name);
-        res.status(200).send(created);
+        try {
+            const {name} = req.body;
+            const created = await model.create({name});
+            res.send(created);
+        } catch (e) {
+            console.error(e);
+            res.sendStatus(400);
+        }
+
     }
 };
 

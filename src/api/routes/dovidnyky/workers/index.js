@@ -10,7 +10,7 @@ const {roleAccess} = require('../../../utils/RoleHelper');
 app.get("/workers", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Workers.Worker));
 
 app.get("/workers/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Workers.Worker));
-
+//TODO controller for workers
 app.post("/workers", verifyUserToken, roleAccess(["String2", "String1"]), createHelper(Dovidnyky.Workers.Worker));
 
 app.patch("/workers/:id", verifyUserToken, roleAccess(["String2", "String1"]), patchHelper(Dovidnyky.Workers.Worker));
