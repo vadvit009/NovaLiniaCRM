@@ -8,7 +8,7 @@ module.exports = {
         const key = crypto.createHash("md5").update(password).digest("hex");
         return Users.findOne({email: email, password: password})
             .then((user) => {
-                if (!user) {
+                if (user) {
                     const token = jwt.sign({user: user}, process.env.SECRET);
                     res.send({user, token});
                 } else {
