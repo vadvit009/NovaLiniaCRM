@@ -9,8 +9,7 @@ module.exports = {
                 user,
                 sortId,
                 shveyaId,
-                date_prizod,
-
+                date_prixod,
                 mishok
             } = req.body;
 
@@ -18,7 +17,8 @@ module.exports = {
                 sortId,
                 shveyaId,
                 date_prixod,
-                mishok: mishok._id,
+                date_rozsxodu: null,
+                mishok,
                 changesId: user._id,
                 deletedAt: null
             });
@@ -35,7 +35,7 @@ module.exports = {
                 user,
                 sortId,
                 shveyaId,
-                date_prizod,
+                date_prixod,
 
                 mishok
             } = req.body;
@@ -137,5 +137,41 @@ module.exports = {
             .populate('packId')
             .populate('changesId')
         res.send(rozxidSklad4)
+    },
+
+    getSklad: async (req, res) => {
+        const sklad2 = await Sklad2.find({})
+            .populate({
+                path: 'mishok',
+                populate: {path: "asortumentId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "imageId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "colorId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "typeId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "sizeId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "classId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "articleId", select: "name -_id"}
+            })
+            .populate('shveyaId')
+            .populate('sortId')
+            .populate({path: 'changesId', select: 'firstName'})
+        res.send(sklad2);
     }
 }

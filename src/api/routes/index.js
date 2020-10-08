@@ -2,6 +2,7 @@ const User = require('./user');
 const Workers = require('./dovidnyky/workers');
 const Roztsinka = require('./roztsinka');
 const Operations = require("./dovidnyky/operations");
+const Zvitu = require('./zvitu');
 const {Sklad1, Sklad2, Sklad3, Sklad4} = require('./skladu');
 const {
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass
@@ -18,6 +19,7 @@ const {
 
 module.exports = {
     User,
+    Zvitu,
     Workers,
     Operations,
     Roztsinka,
@@ -25,5 +27,5 @@ module.exports = {
     MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor,
     PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor,
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass,
-    Sklad1,// Sklad2, Sklad3, Sklad4
+    Sklad1, Sklad2, Sklad3, Sklad4
 }

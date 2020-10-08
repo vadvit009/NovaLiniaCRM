@@ -1,4 +1,4 @@
-const {ProdRoztsinka} = require("../../roztsinka");
+// const {ProdRoztsinka} = require("../../roztsinka");
 const {ProdArticle} = require("./article");
 const {ProdSize} = require("./size");
 const {ProdImage} = require("./image");
@@ -17,5 +17,5 @@ module.exports = {
     ProdImage,
     ProdSize,
     ProdArticle,
-    ProdRoztsinka
+    // ProdRoztsinka
 };

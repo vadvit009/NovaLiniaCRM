@@ -1,29 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/duymu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/duymu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/golku.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/golku.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/vyazalni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines/vyazalni.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/dilanka_rozxody.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/dilanka_rozxody.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/dilanka_rozxody.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/dilanka_rozxody.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/name_of_surovunu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/name_of_surovunu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/tovtshina.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/tovtshina.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/vendor.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/article.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/asortument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/asortument.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/class.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/color.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/color.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/image.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/image.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/season.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/season.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/size.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/size.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/workers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/workers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/users/delete.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/users/delete.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/users/patch.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/users/patch.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/machines/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/machines/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/operations/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/operations/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/production/asortument.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/production/asortument.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/skladu/sklad1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/skladu/sklad3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/skladu/sklad4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/production/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/production/type.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/skladu/sklad2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/skladu/sklad2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/workers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/workers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/utils/RoleHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/utils/RoleHelper.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,24 +83,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api/routes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../locally" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\routes" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\controllers" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\controllers\dovidnyky" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\models" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\controllers" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\controllers" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\routes" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\controllers" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -89,21 +121,37 @@
       <workItem from="1601896626971" duration="7942000" />
       <workItem from="1601999789941" duration="7590000" />
       <workItem from="1602011274402" duration="1340000" />
+      <workItem from="1602083086000" duration="9019000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601571524091">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1601571524091" />
-    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1602004992798">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1602094481180">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602004992798" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602094481180" />
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1602086009139">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1602086009139" />
     <state x="1096" y="242" key="run.anything.popup" timestamp="1601647174459">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

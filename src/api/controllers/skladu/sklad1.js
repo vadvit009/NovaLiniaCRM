@@ -226,7 +226,7 @@ module.exports = {
             .populate('vyazalId')
             .populate('masterId')
             .populate('machineId')
-            .populate('changesId')
+            .populate({path: 'changesId', select: 'firstName'})
         res.send(sklad1);
     }
 }

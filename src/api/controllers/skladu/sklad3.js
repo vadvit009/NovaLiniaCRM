@@ -1,6 +1,5 @@
 const {
     Skladu: {Sklad1, Sklad4, Sklad3, Sklad2},
-    Mishku
 } = require('../../models');
 
 module.exports = {
@@ -8,18 +7,15 @@ module.exports = {
         try {
             const {
                 user,
-                sortId,
-                shveyaId,
+                formId,
                 date_prixod,
-
                 mishok
             } = req.body;
 
             const sklad3 = await Sklad3.create({
-                sortId,
-                shveyaId,
+                formId,
                 date_prixod,
-                mishok: mishok._id,
+                mishok,
                 changesId: user._id,
                 deletedAt: null
             });
@@ -35,20 +31,9 @@ module.exports = {
         try {
             const {
                 user,
-                vyazalId,
-                masterId,
-                machineId,
-                date_prizod,
-                gatynok1,
-                gatynok2,
-                gatynok3,
-                typeId,
-                asortumentId,
-                imageId,
-                colorId,
-                sizeId,
-                classId,
-                articleId,
+                formId,
+                date_prixod,
+                mishok
             } = req.body;
             const {id} = req.params;
 

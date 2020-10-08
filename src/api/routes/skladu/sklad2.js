@@ -8,7 +8,7 @@ const {Sklad2} = require("../../controllers/skladu");
 const {readHelper, readByIdHelper, deleteHelper} = require("../../utils/CRUDhelper");
 const {roleAccess} = require('../../utils/RoleHelper');
 
-app.get("/sklad2", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Skladu.Sklad2));
+app.get("/sklad2", verifyUserToken, roleAccess(["String2", "String1"]), Sklad2.getSklad);
 
 app.get("/sklad2/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Skladu.Sklad2));
 

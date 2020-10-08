@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const {Users} =require('../../models/users')
+const {Users} = require('../../models/users')
 
 module.exports = {
     login: (req, res) => {
@@ -8,8 +8,12 @@ module.exports = {
         const key = crypto.createHash("md5").update(password).digest("hex");
         return Users.findOne({email: email, password: password})
             .then((user) => {
-                const token = jwt.sign({user: user}, process.env.SECRET);
-                res.send({user, token});
+                if (!user) {
+                    const token = jwt.sign({user: user}, process.env.SECRET);
+                    res.send({user, token});
+                } else {
+                    res.sendStatus(409)
+                }
             })
             .catch((err) => {
                 console.log("Err === ", err);

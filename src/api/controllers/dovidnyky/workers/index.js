@@ -1,21 +1,56 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const {Dovidnyky: {Workers: {Worker}}} = require('../../../models');
 
-const WorkerSchema = new Schema(
-    {
-        fName: String,
-        fatherName: String,
-        sName: String,
-        status: String,
-        operationId: [{type: mongoose.ObjectId, ref: "Operations"}],
-        changesId: {type: mongoose.ObjectId, ref: "Users"},
-        deletedAt: Date
+module.exports = {
+    createWorker: async (req, res) => {
+        try {
+            const {
+                fName,
+                fatherName,
+                sName,
+                status,
+                operationId,
+                changesId,
+            } = req.body;
+            const worker = await Worker.create({
+                fName,
+                fatherName,
+                sName,
+                status,
+                operationId,
+                changesId,
+                deletedAt: null
+            })
+            res.send(worker);
+
+        } catch (e) {
+            console.error(e);
+            res.sendStatus(400)
+        }
     },
-    {
-        timestamps: true
+    patchWorker: async (req, res) => {
+        try {
+            const {
+                fName,
+                fatherName,
+                sName,
+                status,
+                operationId,
+                changesId,
+            } = req.body;
+            const {id} = req.params;
+
+            const updatedWorker = await Worker.findByIdAndUpdate(id, {
+                fName,
+                fatherName,
+                sName,
+                status,
+                operationId,
+                changesId,
+            }, {new: true})
+            res.send(updatedWorker);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400);
+        }
     }
-);
-
-const Worker = mongoose.model("Worker", WorkerSchema, "workers");
-
-module.exports = {Worker};
+}
