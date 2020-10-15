@@ -19,7 +19,7 @@ module.exports = {
                 imageId,
                 sizeId,
                 articleId,
-                changesId,
+                user,
             } = req.body;
             const roztsinka = await Roztsinka.create({
                 startDate,
@@ -37,7 +37,7 @@ module.exports = {
                 imageId,
                 sizeId,
                 articleId,
-                changesId,
+                changesId: user._id,
                 deletedAt: null
             })
             res.send(roztsinka);
@@ -64,7 +64,7 @@ module.exports = {
                 imageId,
                 sizeId,
                 articleId,
-                changesId,
+                user,
             } = req.body;
             const {id} = req.params;
 
@@ -84,7 +84,7 @@ module.exports = {
                 imageId,
                 sizeId,
                 articleId,
-                changesId,
+                changesId: user._id,
                 updatedAt: Date.now(),
                 deletedAt: null
             })

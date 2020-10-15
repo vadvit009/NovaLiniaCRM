@@ -38,20 +38,9 @@ module.exports = {
             const {id} = req.params;
 
             const updated = await Sklad3.findByIdAndUpdate(id, {
-                vyazalId,
-                masterId,
-                machineId,
+                formId,
                 date_prixod,
-                gatynok1,
-                gatynok2,
-                gatynok3,
-                typeId,
-                asortumentId,
-                imageId,
-                colorId,
-                sizeId,
-                classId,
-                articleId,
+                mishok,
                 changesId: user._id,
                 updatedAt: Date.now(),
                 deletedAt: null
@@ -64,7 +53,7 @@ module.exports = {
     },
     rozxidToSklad2: async (req, res) => {
         const {user, mishok, date_rozsxodu, shveyId, sortId} = req.body;
-        const rozxidSklad2 = await Sklad2.create({
+        const rozxidSklad2 = await Sklad3.create({
             changesId: user._id,
             mishok,
             date_rozsxodu,

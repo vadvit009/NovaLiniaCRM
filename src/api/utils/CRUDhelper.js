@@ -23,8 +23,14 @@ const patchHelper = (model) => {
 
 const readHelper = (model) => {
     return async (req, res) => {
-        const readed = await model.find({});
-        res.status(200).send(readed);
+        const {from, to, search} = req.query;
+        if (from !== undefined || to !== undefined || search !== undefined) {
+            const readed = await model.find({createdAt: {$gte: from, $lte: to}, name: search});
+            res.status(200).send(readed);
+        } else {
+            const readed = await model.find({});
+            res.status(200).send(readed);
+        }
     }
 }
 

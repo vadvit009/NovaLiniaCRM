@@ -11,42 +11,22 @@ module.exports = {
                 vyazalId,
                 masterId,
                 machineId,
-                date_prizod,
-                gatynok1,
-                gatynok2,
-                gatynok3,
-                typeId,
-                asortumentId,
-                imageId,
-                colorId,
-                sizeId,
-                classId,
-                articleId,
+                date_prixod,
+                mishok
             } = req.body;
 
-            const mishok = await Mishku.create({
-                typeId,
-                asortumentId,
-                imageId,
-                colorId,
-                sizeId,
-                classId,
-                articleId,
-                gatynok1,
-                gatynok2,
-                gatynok3,
-            })
-            const sklad1 = await Sklad1.create({
+            const sklad4 = await Sklad4.create({
                 vyazalId,
                 masterId,
                 machineId,
                 date_prixod,
-                mishok: mishok._id,
+                date_rozsxodu: null,
+                mishok: mishok,
                 changesId: user._id,
                 deletedAt: null
             });
 
-            res.send({mishokId: mishok._id});
+            res.send(sklad4);
         } catch (e) {
             console.log(e);
             res.sendStatus(400);
@@ -59,7 +39,7 @@ module.exports = {
                 vyazalId,
                 masterId,
                 machineId,
-                date_prizod,
+                date_prixod,
                 gatynok1,
                 gatynok2,
                 gatynok3,
