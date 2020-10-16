@@ -6,6 +6,7 @@ const MishkuSchema = new Schema(
         gatynok1: Number,
         gatynok2: Number,
         gatynok3: Number,
+        barcode: Number,
         typeId: {type: mongoose.ObjectId, ref: "ProdType"},
         asortumentId: {type: mongoose.ObjectId, ref: "ProdAsortument"},
         imageId: {type: mongoose.ObjectId, ref: "ProdImage"},

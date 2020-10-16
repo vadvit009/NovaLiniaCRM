@@ -1,3 +1,4 @@
+const {getNextSequence} = require("../../utils/getNextId");
 const {
     Skladu: {Sklad1, Sklad4, Sklad3, Sklad2},
     Mishku
@@ -30,6 +31,7 @@ module.exports = {
                 imageId,
                 colorId,
                 sizeId,
+                barcode: getNextSequence('barcode'),
                 classId,
                 articleId,
                 date_prixod,
@@ -49,7 +51,7 @@ module.exports = {
                 deletedAt: null
             });
 
-            res.send({mishokId: mishok._id});
+            res.send({mishokId: mishok._id, barcode});
         } catch (e) {
             console.log(e);
             res.sendStatus(400);

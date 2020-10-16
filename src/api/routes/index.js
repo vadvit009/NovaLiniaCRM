@@ -12,7 +12,7 @@ const {
     MachineVyazalni, MachineModel, MachineGolku, MachineDuymu
 } = require("./dovidnyky/machines");
 const {
-    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor
+    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor,Materials
 } = require('./dovidnyky/materials');
 const {
     PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor
@@ -26,7 +26,7 @@ module.exports = {
     Operations,
     Roztsinka,
     MachineVyazalni, MachineModel, MachineGolku, MachineDuymu,
-    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor,
+    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor,Materials,
     PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor,
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass,
     Sklad1, Sklad2, Sklad3, Sklad4

@@ -16,7 +16,7 @@ const {
     Roztsinka,
     Sklad1, Sklad2,// Sklad3, Sklad4,
     MachineVyazalni, MachineModel, MachineGolku, MachineDuymu,
-    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor,
+    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor, Materials,
     PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor,
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass,
 
@@ -45,7 +45,7 @@ app.use(
     Zarplata,
     Sklad1, Sklad2,
     MachineVyazalni, MachineModel, MachineGolku, MachineDuymu,
-    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor,
+    MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor, Materials,
     PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor,
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass,
 );
