@@ -63,7 +63,7 @@ module.exports = {
     zalushok: async (req, res) => {
         try {
             const {day} = req.query;
-            const formatted = moment.unix(day).format('YYYY-MM-DD')
+            const formatted = moment.unix(day/1000).format('YYYY-MM-DD')
             console.log(day);
             console.log(formatted)
             const aggregated = await Materials.aggregate([{
