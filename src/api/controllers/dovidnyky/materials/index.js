@@ -63,8 +63,9 @@ module.exports = {
     zalushok: async (req, res) => {
         try {
             const {day} = req.query;
-            const formatted = moment(new Date(Date(day))).format('YYYY-MM-DD')
-            console.log(formatted);
+            const formatted = moment.unix(day).format('YYYY-MM-DD')
+            console.log(day);
+            console.log(formatted)
             const aggregated = await Materials.aggregate([{
                 $addFields: {
                     creationDate: {

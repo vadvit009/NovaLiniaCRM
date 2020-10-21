@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/materials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/materials.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +95,7 @@
       <workItem from="1602850081424" duration="8578000" />
       <workItem from="1603116582592" duration="86000" />
       <workItem from="1603206425268" duration="1762000" />
-      <workItem from="1603285082942" duration="8905000" />
+      <workItem from="1603285082942" duration="10281000" />
     </task>
     <servers />
   </component>
