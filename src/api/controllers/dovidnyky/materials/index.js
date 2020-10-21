@@ -1,4 +1,5 @@
 const {Dovidnyky: {Materials: {Materials}}} = require('../../../models');
+const moment = require('moment');
 
 module.exports = {
     prixodMaterials: async (req, res) => {
@@ -59,4 +60,33 @@ module.exports = {
             res.sendStatus(400)
         }
     },
+    zalushok: async (req, res) => {
+        try {
+            const {day} = req.query;
+            const formatted = moment(new Date(Date(day))).format('YYYY-MM-DD')
+            console.log(formatted);
+            const aggregated = await Materials.aggregate([{
+                $addFields: {
+                    creationDate: {
+                        $dateToString: {
+                            format: "%Y-%m-%d",
+                            date: "$date_rozxodu"
+                        }
+                    }
+                }
+            },
+                {
+                    $match: {
+                        $or: [
+                            {creationDate: null},
+                            {creationDate: formatted}]
+                    }
+                }
+            ])
+            res.json(aggregated)
+        } catch (e) {
+            console.log(e)
+            res.sendStatus(400)
+        }
+    }
 }

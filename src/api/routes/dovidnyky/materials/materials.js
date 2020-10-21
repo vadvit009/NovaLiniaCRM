@@ -1,4 +1,4 @@
-const {prixodMaterials, rozxodMaterials} = require("../../../controllers/dovidnyky/materials");
+const {prixodMaterials, rozxodMaterials, zalushok} = require("../../../controllers/dovidnyky/materials");
 const app = require("express").Router();
 const {Dovidnyky} = require('../../../models')
 const {
@@ -9,6 +9,8 @@ const {readHelper, readByIdHelper, deleteHelper} = require('../../../utils/CRUDh
 const {roleAccess} = require('../../../utils/RoleHelper');
 
 app.get("/materials", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Materials.Materials));
+
+app.get("/materials_zalushok", verifyUserToken, roleAccess(["String2", "String1"]), zalushok);
 
 app.get("/materials/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Materials.Materials));
 
