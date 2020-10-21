@@ -25,8 +25,12 @@ const readHelper = (model) => {
     return async (req, res) => {
         const {from, to, search} = req.query;
         if (from !== undefined || to !== undefined || search !== undefined) {
-            const readed = await model.find({createdAt: {$gte: from, $lte: to}, name: search});
-            res.status(200).send(readed);
+            if (!from || !to) {
+                const filtered = await model.find({name: search});
+                return res.status(200).send(filtered);
+            }
+            const filtered = await model.find({createdAt: {$gte: from, $lte: to}, name: search});
+            res.status(200).send(filtered);
         } else {
             const readed = await model.find({});
             res.status(200).send(readed);
