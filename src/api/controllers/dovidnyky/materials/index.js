@@ -63,26 +63,43 @@ module.exports = {
     zalushok: async (req, res) => {
         try {
             const {day} = req.query;
-            const formatted = moment.unix(day/1000).format('YYYY-MM-DD')
+            const formatted = moment.unix(day / 1000).format('YYYY-MM-DD')
             console.log(day);
             console.log(formatted)
-            const aggregated = await Materials.aggregate([{
-                $addFields: {
-                    creationDate: {
-                        $dateToString: {
-                            format: "%Y-%m-%d",
-                            date: "$date_rozxodu"
+            const aggregated = await Materials.aggregate([
+                {
+                    $addFields: {
+                        creationDate: {
+                            $dateToString: {
+                                format: "%Y-%m-%d",
+                                date: "$date_rozxodu"
+                            }
                         }
                     }
-                }
-            },
+                },
                 {
                     $match: {
                         $or: [
                             {creationDate: null},
                             {creationDate: formatted}]
                     }
-                }
+                },
+                {
+                    $addFields: {
+                        prixodDate: {
+                            $dateToString: {
+                                format: "%Y-%m-%d",
+                                date: "$date_prixod"
+                            }
+                        }
+                    }
+                },
+                {
+                    $match: {
+                        prixodDate: formatted
+                    }
+                },
+
             ])
             res.json(aggregated)
         } catch (e) {
