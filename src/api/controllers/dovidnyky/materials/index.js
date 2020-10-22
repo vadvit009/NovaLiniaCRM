@@ -63,45 +63,30 @@ module.exports = {
     zalushok: async (req, res) => {
         try {
             const {day} = req.query;
-            const formatted = moment.unix(day / 1000).format('YYYY-MM-DD')
-            console.log(day);
-            console.log(formatted)
-            const aggregated = await Materials.aggregate([
-                {
-                    $addFields: {
-                        creationDate: {
-                            $dateToString: {
-                                format: "%Y-%m-%d",
-                                date: "$date_rozxodu"
-                            }
+            // const formattedStart = moment.unix(day / 1000).format('YYYY-MM-DD');
+            // const formattedFinish = moment.unix(day / 1000).add(1, 'days').format('YYYY-MM-DD');
+            const plusDay = moment(day).add(1,'days').format('YYYY-MM-DD');
+            console.log(new Date(plusDay))
+            console.log(new Date(day))
+            // console.log(new Date(formattedStart))
+            // console.log(new Date(formattedFinish))
+            const agg = await Materials.find({
+                $and:
+                    [
+                        {date_prixod: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                        {
+                            $or: [
+                                {date_rozxodu: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                                {date_rozxodu: null},
+                            ]
                         }
-                    }
-                },
-                {
-                    $match: {
-                        $or: [
-                            {creationDate: null},
-                            {creationDate: formatted}]
-                    }
-                },
-                {
-                    $addFields: {
-                        prixodDate: {
-                            $dateToString: {
-                                format: "%Y-%m-%d",
-                                date: "$date_prixod"
-                            }
-                        }
-                    }
-                },
-                {
-                    $match: {
-                        prixodDate: formatted
-                    }
-                },
-
-            ])
-            res.json(aggregated)
+                    ]
+            })
+                .populate('paramsValueId')
+                .populate('paramsId')
+                .populate('vendorId')
+                .populate('typeId')
+            res.json(agg)
         } catch (e) {
             console.log(e)
             res.sendStatus(400)
