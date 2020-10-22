@@ -17,7 +17,7 @@ const {
     Sklad1, Sklad2,// Sklad3, Sklad4,
     MachineVyazalni, MachineModel, MachineGolku, MachineDuymu,
     MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor, Materials,
-    PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor,
+    PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor, Priaga,
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass,
 
 } = require('./src/api/routes');
@@ -46,7 +46,7 @@ app.use(
     Sklad1, Sklad2,
     MachineVyazalni, MachineModel, MachineGolku, MachineDuymu,
     MaterialsDilankaRozxody, MaterialsParams, MaterialsParamsValue, MaterialsType, MaterialsVendor, Materials,
-    PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor,
+    PriagaVendor, PriagaType, PriagaTovtshina, PriagaSurovuna, PriagaDilankaRozxody, PriagaColor, Priaga,
     ProdColor, ProdArticle, ProdSize, ProdType, ProdSeason, ProdImage, ProdAsortument, ProdClass,
 );
 

@@ -4,6 +4,7 @@ const PriagaTovtshina = require("./tovtshina");
 const PriagaVendor = require("./vendor");
 const PriagaColor = require("./colors");
 const PriagaType = require('./type');
+const Priaga = require('./priaga');
 
 module.exports = {
     PriagaType,
@@ -12,4 +13,5 @@ module.exports = {
     PriagaSurovuna,
     PriagaTovtshina,
     PriagaVendor,
+    Priaga
 }

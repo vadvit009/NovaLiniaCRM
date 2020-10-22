@@ -3,6 +3,7 @@ const {
     Skladu: {Sklad1, Sklad4, Sklad3, Sklad2},
     Mishku
 } = require('../../models');
+const moment = require('moment')
 
 module.exports = {
     pruxodSklad1: async (req, res) => {
@@ -230,5 +231,65 @@ module.exports = {
             .populate('machineId')
             .populate({path: 'changesId', select: 'firstName'})
         res.send(sklad1);
+    },
+    zalushok: async (req, res) => {
+        try {
+            const {day} = req.query;
+            // const formattedStart = moment.unix(day / 1000).format('YYYY-MM-DD');
+            // const formattedFinish = moment.unix(day / 1000).add(1, 'days').format('YYYY-MM-DD');
+            const plusDay = moment(day).add(1, 'days').format('YYYY-MM-DD');
+            console.log(new Date(plusDay))
+            console.log(new Date(day))
+            // console.log(new Date(formattedStart))
+            // console.log(new Date(formattedFinish))
+            const agg = await Sklad1.find({
+                $and:
+                    [
+                        {date_prixod: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                        {
+                            $or: [
+                                {date_rozxodu: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                                {date_rozxodu: null},
+                            ]
+                        }
+                    ]
+            })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "asortumentId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "imageId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "colorId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "typeId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "sizeId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "classId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "articleId", select: "name -_id"}
+                })
+                .populate('vyazalId')
+                .populate('masterId')
+                .populate('machineId')
+                .populate({path: 'changesId', select: 'firstName'})
+            res.json(agg)
+        } catch (e) {
+            console.log(e)
+            res.sendStatus(400)
+        }
     }
 }

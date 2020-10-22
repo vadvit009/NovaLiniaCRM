@@ -10,6 +10,8 @@ const {roleAccess} = require('../../utils/RoleHelper');
 
 app.get("/sklad1", verifyUserToken, roleAccess(["String2", "String1"]), Sklad1.getSklad);
 
+app.get("/sklad1_zalushok", verifyUserToken, roleAccess(["String2", "String1"]), Sklad1.zalushok);
+
 app.get("/sklad1/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Skladu.Sklad1));
 
 app.post("/sklad1", verifyUserToken, roleAccess(["String2", "String1"]), Sklad1.pruxodSklad1);
