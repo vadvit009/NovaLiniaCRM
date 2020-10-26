@@ -16,7 +16,7 @@ const patchHelper = (model) => {
     return async (req, res) => {
         const {id} = req.params;
         const {name} = req.body;
-        const updated = await model.findByIdAndUpdate(id, {id, name})
+        const updated = await model.findByIdAndUpdate(id, {id, name}, {new: true})
         res.status(200).send(updated);
     }
 }

@@ -10,7 +10,7 @@ const {roleAccess} = require('../../../utils/RoleHelper');
 app.get("/priaga_vendor", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Priaga.PriagaVendor));
 
 app.get("/priaga_vendor/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Priaga.PriagaVendor));
-
+//TODO NORM CREATE/UPDATE
 app.post("/priaga_vendor", verifyUserToken, roleAccess(["String2", "String1"]), createHelper(Dovidnyky.Priaga.PriagaVendor));
 
 app.patch("/priaga_vendor/:id", verifyUserToken, roleAccess(["String2", "String1"]), patchHelper(Dovidnyky.Priaga.PriagaVendor));

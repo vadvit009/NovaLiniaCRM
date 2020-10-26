@@ -3,6 +3,7 @@ const {Roztsinka} = require('../../models');
 module.exports = {
     createRoztsinka: async (req, res) => {
         try {
+            //TODO GATUNOK 1,2,3,
             const {
                 startDate,
                 endDate,

@@ -10,7 +10,7 @@ const {roleAccess} = require('../../../utils/RoleHelper');
 app.get("/materials_type", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Materials.MaterialsType));
 
 app.get("/materials_type/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Materials.MaterialsType));
-
+//TODO NORM CREATE/UPDATE
 app.post("/materials_type", verifyUserToken, roleAccess(["String2", "String1"]), createHelper(Dovidnyky.Materials.MaterialsType));
 
 app.patch("/materials_type/:id", verifyUserToken, roleAccess(["String2", "String1"]), patchHelper(Dovidnyky.Materials.MaterialsType));

@@ -78,7 +78,7 @@ module.exports = {
                 articleId,
             } = req.body;
             const {id} = req.params;
-
+//TODO IF DATE_ROZXODU === NULL
             const updated = await Sklad1.findByIdAndUpdate(id, {
                 vyazalId,
                 masterId,
@@ -242,6 +242,7 @@ module.exports = {
             console.log(new Date(day))
             // console.log(new Date(formattedStart))
             // console.log(new Date(formattedFinish))
+            //TODO DELETE $GTE (DAY)
             const agg = await Sklad1.find({
                 $and:
                     [
