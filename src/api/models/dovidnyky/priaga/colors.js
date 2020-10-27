@@ -5,6 +5,7 @@ const ColorSchema = new Schema(
     {
         name: String,
         code: String,
+        vendorId: {type: mongoose.ObjectId, ref:"PriagaVendor"},
         changesId: {type: mongoose.ObjectId, ref: "Users"},
         deletedAt: Date
     },

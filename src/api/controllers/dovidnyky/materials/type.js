@@ -1,20 +1,40 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-//
-// const TypeSchema = new Schema(
-//     {
-//         name: String,
-//         vendorId: {type: mongoose.ObjectId, ref: "MaterialsVendor"},
-//         dilankaId: {type: mongoose.ObjectId, ref: "MaterialsDilankaRozxody"},
-//         paramsId: {type: mongoose.ObjectId, ref: "MaterialsParams"},
-//         changesId: {type: mongoose.ObjectId, ref: "Users"},
-//         deletedAt: Date
-//     },
-//     {
-//         timestamps: true
-//     }
-// );
-//
-// const MaterialsType = mongoose.model("MaterialsType", TypeSchema, "materials_type");
-//
-// module.exports = {MaterialsType};
+const {Dovidnyky: {Materials: {MaterialsType}}} = require('../../../models');
+
+module.exports = {
+    createMaterialsType: async (req, res) => {
+        const {
+            name,
+            vendorId,
+            dilankaId,
+            paramsId,
+            user
+        } = req.body;
+        const created = await MaterialsType.create({
+            name,
+            vendorId,
+            dilankaId,
+            paramsId,
+            changesId: user._id
+        });
+        res.send(created);
+    },
+    patchMaterialsType: async (req, res) => {
+        const {
+            name,
+            vendorId,
+            dilankaId,
+            paramsId,
+            user
+        } = req.body;
+        const {id} = req.params;
+
+        const updated = await MaterialsType.findByIdAndUpdate(id, {
+            name,
+            vendorId,
+            dilankaId,
+            paramsId,
+            changesId: user._id
+        }, {new: true});
+        res.send(updated);
+    },
+}

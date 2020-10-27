@@ -1,3 +1,4 @@
+const {patchMaterialsParamsValue, createMaterialsParamsValue} = require("../../../controllers/dovidnyky/materials/params_value");
 const app = require("express").Router();
 const {Dovidnyky} = require('../../../models')
 const {
@@ -11,9 +12,9 @@ app.get("/materials_params_value", verifyUserToken, roleAccess(["String2", "Stri
 
 app.get("/materials_params_value/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Materials.MaterialsParamsValue));
 
-app.post("/materials_params_value", verifyUserToken, roleAccess(["String2", "String1"]), createHelper(Dovidnyky.Materials.MaterialsParamsValue));
+app.post("/materials_params_value", verifyUserToken, roleAccess(["String2", "String1"]), createMaterialsParamsValue);
 
-app.patch("/materials_params_value/:id", verifyUserToken, roleAccess(["String2", "String1"]), patchHelper(Dovidnyky.Materials.MaterialsParamsValue));
+app.patch("/materials_params_value/:id", verifyUserToken, roleAccess(["String2", "String1"]), patchMaterialsParamsValue);
 
 app.delete("/materials_params_value/:id", verifyUserToken, roleAccess(["String2", "String1"]), deleteHelper(Dovidnyky.Materials.MaterialsParamsValue));
 

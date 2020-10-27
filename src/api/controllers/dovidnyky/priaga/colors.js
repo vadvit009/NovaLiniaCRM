@@ -1,18 +1,38 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-//
-// const ColorSchema = new Schema(
-//     {
-//         name: String,
-//         code: String,
-//         changesId: {type: mongoose.ObjectId, ref: "Users"},
-//         deletedAt: Date
-//     },
-//     {
-//         timestamps: true
-//     }
-// );
-//
-// const PriagaColor = mongoose.model("PriagaColor", ColorSchema, "priaga_color");
-//
-// module.exports = {PriagaColor};
+const {Dovidnyky: {Priaga: {PriagaColor}}} = require('../../../models');
+
+module.exports = {
+    createColor: async (req, res) => {
+        const {
+            name,
+            code,
+            vendorId,
+            user
+        } = req.body;
+        const created = await PriagaColor.create({
+            name,
+            code,
+            vendorId,
+            changesId: user._id
+        });
+        res.send(created);
+    },
+    patchColor: async (req, res) => {
+        const {
+            name,
+            code,
+            vendorId,
+            user
+        } = req.body;
+        const {id} = req.params;
+        const updated = await PriagaColor.findByIdAndUpdate(id,
+            {
+                name,
+                code,
+                vendorId,
+                changesId: user._id
+            },
+            {new: true}
+        );
+        res.send(updated);
+    }
+}

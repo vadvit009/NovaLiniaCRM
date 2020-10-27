@@ -11,7 +11,7 @@ const {roleAccess} = require('../../../utils/RoleHelper');
 app.get("/machines_vyazalni", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Machines.MachineVyazalni));
 
 app.get("/machines_vyazalni/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Machines.MachineVyazalni));
-//TODO NORMALIZE CREATE
+
 app.post("/machines_vyazalni", verifyUserToken, roleAccess(["String2", "String1"]), createMachineVyazalni);
 
 app.patch("/machines_vyazalni/:id", verifyUserToken, roleAccess(["String2", "String1"]), patchMachineVyazalni);

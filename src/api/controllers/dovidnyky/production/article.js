@@ -1,26 +1,67 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-//
-// const ArticleSchema = new Schema(
-//     {
-//         name: String,
-//         status: String,
-//         typeId: {type: mongoose.ObjectId, ref: "ProdType"},
-//         asortumentId: {type: mongoose.ObjectId, ref: "ProdAsortument"},
-//         imageId: {type: mongoose.ObjectId, ref: "ProdImage"},
-//         colorId: {type: mongoose.ObjectId, ref: "ProdColor"},
-//         sizeId: {type: mongoose.ObjectId, ref: "ProdSize"},
-//         classId: {type: mongoose.ObjectId, ref: "ProdClass"},
-//         articleId: {type: mongoose.ObjectId, ref: "ProdArticle"},
-//         seasonId: {type: mongoose.ObjectId, ref: "ProdSeason"},
-//         changesId: {type: mongoose.ObjectId, ref: "Users"},
-//         deletedAt: Date
-//     },
-//     {
-//         timestamps: true
-//     }
-// );
-//
-// const ProdArticle = mongoose.model("ProdArticle", ArticleSchema, "prod_article");
-//
-// module.exports = {ProdArticle};
+const {Dovidnyky: {Production: {ProdArticle}}} = require('../../../models');
+
+module.exports = {
+    createArticle: async (req, res) => {
+        const {
+            name,
+            status,
+            typeId,
+            asortumentId,
+            imageId,
+            colorId,
+            sizeId,
+            classId,
+            articleId,
+            seasonId,
+            user
+        } = req.body;
+        const created = await ProdArticle.create({
+            name,
+            status,
+            typeId,
+            asortumentId,
+            imageId,
+            colorId,
+            sizeId,
+            classId,
+            articleId,
+            seasonId,
+            changesId: user._id,
+            deletedAt: null
+        });
+        res.send(created)
+    },
+    patchArticle: async (req, res) => {
+        const {
+            name,
+            status,
+            typeId,
+            asortumentId,
+            imageId,
+            colorId,
+            sizeId,
+            classId,
+            articleId,
+            seasonId,
+            user
+        } = req.body;
+        const {id} = req.params;
+        const updated = await ProdArticle.findByIdAndUpdate(id,
+            {
+                name,
+                status,
+                typeId,
+                asortumentId,
+                imageId,
+                colorId,
+                sizeId,
+                classId,
+                articleId,
+                seasonId,
+                changesId: user._id,
+                deletedAt: null
+            },
+            {new: true});
+        res.send(updated)
+    }
+}

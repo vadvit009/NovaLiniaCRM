@@ -1,18 +1,16 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-//
-// const ParamsSchema = new Schema(
-//     {
-//         name: String,
-//         typeId: {type: mongoose.ObjectId, ref: "MaterialsType"},
-//         changesId: {type: mongoose.ObjectId, ref: "Users"},
-//         deletedAt: Date
-//     },
-//     {
-//         timestamps: true
-//     }
-// );
-//
-// const MaterialsParams = mongoose.model("MaterialsParams", ParamsSchema, "materials_params");
-//
-// module.exports = {MaterialsParams};
+const {Dovidnyky: {Materials: {MaterialsParams}}} = require('../../../models');
+
+module.exports = {
+    createMaterialsParams: async (req, res) => {
+        const {name, user, typeId} = req.body;
+        const created = await MaterialsParams.create({name, changesId: user._id, typeId});
+        res.send(created);
+    },
+    patchMaterialsParams: async (req, res) => {
+        const {name, user, typeId} = req.body;
+        const {id} = req.params;
+
+        const updated = await MaterialsParams.findByIdAndUpdate(id, {name, changesId: user._id, typeId}, {new: true});
+        res.send(updated);
+    },
+}

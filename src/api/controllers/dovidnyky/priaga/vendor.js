@@ -1,19 +1,38 @@
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-//
-// const VendorSchema = new Schema(
-//     {
-//         name: String,
-//         country: String,
-//         city: String,
-//         changesId: {type: mongoose.ObjectId, ref: "Users"},
-//         deletedAt: Date
-//     },
-//     {
-//         timestamps: true
-//     }
-// );
-//
-// const PriagaVendor = mongoose.model("PriagaVendor", VendorSchema, "priaga_vendor");
-//
-// module.exports = {PriagaVendor};
+const {Dovidnyky: {Priaga: {PriagaVendor}}} = require('../../../models');
+
+module.exports = {
+    createVendor: async (req, res) => {
+        const {
+            name,
+            country,
+            city,
+            user
+        } = req.body;
+        const created = await PriagaVendor.create({
+            name,
+            country,
+            city,
+            changesId: user._id
+        });
+        res.send(created);
+    },
+    patchVendor: async (req, res) => {
+        const {
+            name,
+            country,
+            city,
+            user
+        } = req.body;
+        const {id} = req.params;
+        const updated = await PriagaVendor.findByIdAndUpdate(id,
+            {
+                name,
+                country,
+                city,
+                changesId: user._id
+            },
+            {new: true}
+        );
+        res.send(updated);
+    }
+}

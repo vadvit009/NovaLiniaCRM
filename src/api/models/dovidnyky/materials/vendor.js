@@ -5,8 +5,8 @@ const VendorSchema = new Schema(
     {
         name: String,
         country: String,
-        changesId: {type: mongoose.ObjectId, ref: "Users"},
         city: String,
+        changesId: {type: mongoose.ObjectId, ref: "Users"},
         deletedAt: Date
     },
     {
