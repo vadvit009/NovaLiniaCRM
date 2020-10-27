@@ -1,6 +1,27 @@
 const {Roztsinka} = require('../../models');
 
 module.exports = {
+    getRoztsinka: async (req, res) => {
+        try {
+            const populated = await Roztsinka.find()
+                .populate('operationId')
+                .populate('machineId')
+                .populate('typeId')
+                .populate('colorId')
+                .populate('asortument')
+                .populate('classId')
+                .populate('seasonId')
+                .populate('imageId')
+                .populate('sizeId')
+                .populate('articleId')
+                .populate('changesId')
+            res.send(populated);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400)
+        }
+
+    },
     createRoztsinka: async (req, res) => {
         try {
             //TODO GATUNOK 1,2,3,

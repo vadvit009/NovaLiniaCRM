@@ -21,26 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/type.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/vendor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/colors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/vendor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/materials/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/materials/vendor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/priaga/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/priaga/colors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/machines/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/machines/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/machines/vyazalni.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/machines/vyazalni.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params_value.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params_value.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/type.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/type.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/vendor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/priaga/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/priaga/colors.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/priaga/vendor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/priaga/vendor.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/production/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/production/article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,19 +53,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\controllers\dovidnyky\machines" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\controllers" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\routes" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
+      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\models" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\controllers" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
       <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\controllers" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM-back\src\api\routes" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\routes\dovidnyky\production" />
-      <recent name="C:\Users\vadvit009\Desktop\Projects\CRM\src\api\controllers" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -121,7 +101,8 @@
       <workItem from="1603736815190" duration="1889000" />
       <workItem from="1603739912140" duration="63000" />
       <workItem from="1603800458307" duration="12000" />
-      <workItem from="1603800671550" duration="4526000" />
+      <workItem from="1603800671550" duration="4880000" />
+      <workItem from="1603806120419" duration="663000" />
     </task>
     <servers />
   </component>
