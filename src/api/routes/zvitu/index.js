@@ -4,15 +4,14 @@ const {
     verifyUserToken
 } = require("../../middleware/jwtAuth");
 
-const {prixodZvitu, patchPruxodZvitu, rozxidZvitu} = require('../../controllers/zvitu');
-const {zalushok} = require("../../controllers/zvitu");
-const {readByIdHelper, readHelper, deleteHelper} = require('../../utils/CRUDhelper')
+const { zalushok, prixod, rozxodu, prixodZvitu, patchPruxodZvitu, rozxidZvitu } = require('../../controllers/zvitu');
+const { readByIdHelper, readHelper, deleteHelper } = require('../../utils/CRUDhelper')
 
-const {Zvitu} = require('../../models');
+const { Zvitu } = require('../../models');
 
-app.get("/zvitu", verifyUserToken, readHelper(Zvitu));
+app.get("/zvitu", verifyUserToken, prixod);
 
-app.get("/zvitu_rozxid", verifyUserToken, readHelper(Zvitu));
+app.get("/zvitu_rozxid", verifyUserToken, rozxodu);
 
 app.get("/zvitu/:id", verifyUserToken, readByIdHelper(Zvitu));
 

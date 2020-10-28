@@ -1,10 +1,10 @@
-const {Zvitu} = require('../../models/zvitu');
+const { Zvitu } = require('../../models/zvitu');
 const mongoose = require('mongoose');
 
 module.exports = {
     prixodZvitu: async (req, res) => {
         try {
-            const {operationId, workerId, gatynok1, gatynok2, gatynok3, date_prixodu} = req.body;
+            const { user, operationId, workerId, gatynok1, gatynok2, gatynok3, date_prixodu } = req.body;
             const prixodZvitu = await Zvitu.create({
                 operationId,
                 workerId,
@@ -12,7 +12,8 @@ module.exports = {
                 gatynok2,
                 gatynok3,
                 date_prixodu,
-                date_rozxodu: null
+                date_rozxodu: null,
+                changesId: user._id
             });
             res.send(prixodZvitu);
         } catch (e) {
@@ -22,8 +23,8 @@ module.exports = {
     },
     rozxidZvitu: async (req, res) => {
         try {
-            let {operationId, workerId, gatynok1, gatynok2, gatynok3, date_rozxodu} = req.body;
-            const rozxidZvitu = await Zvitu.find({date_rozxodu: null});
+            let { user, operationId, workerId, gatynok1, gatynok2, gatynok3, date_rozxodu } = req.body;
+            const rozxidZvitu = await Zvitu.find({ date_rozxodu: null });
             const sum = {
                 gatynok1: 0,
                 gatynok2: 0,
@@ -43,12 +44,12 @@ module.exports = {
                     if (gatynok1 > 0) {
                         if (zvit.gatynok1 > gatynok1) {
                             gatynok1 = 0
-                            return {...zvit._doc, gatynok1: zvit.gatynok1 - gatynok1}
+                            return { ...zvit._doc, gatynok1: zvit.gatynok1 - gatynok1 }
                             // arrToRequest.push({...zvit._doc, gatynok1: zvit.gatynok1 - gatynok1})
                         } else if (zvit.gatynok1 <= gatynok1) {
                             // arrToRequest.push({...zvit._doc, gatynok1: 0})
                             gatynok1 -= zvit.gatynok1
-                            return {...zvit._doc, gatynok1: 0}
+                            return { ...zvit._doc, gatynok1: 0 }
                         }
                     }
                 })
@@ -56,13 +57,14 @@ module.exports = {
 
                 arrToRequest.filter(Boolean)
                     .forEach(item => {
-                        console.log("item === ",item)
+                        console.log("item === ", item)
                         Zvitu.findByIdAndUpdate(item._id,
                             {
                                 ...item,
+                                changesId: user._id,
                                 date_rozxodu
                             },
-                            {new: true})
+                            { new: true })
                             .then((updatedZvit) => {
                                 console.log("updatedZvit === ", updatedZvit._doc)
                                 Zvitu.create({
