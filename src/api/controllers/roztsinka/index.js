@@ -24,7 +24,6 @@ module.exports = {
     },
     createRoztsinka: async (req, res) => {
         try {
-            //TODO GATUNOK 1,2,3,
             const {
                 startDate,
                 endDate,
@@ -41,9 +40,6 @@ module.exports = {
                 imageId,
                 sizeId,
                 articleId,
-                gatynok1,
-                gatynok2,
-                gatynok3,
                 user,
             } = req.body;
             const roztsinka = await Roztsinka.create({
@@ -61,9 +57,6 @@ module.exports = {
                 seasonId,
                 imageId,
                 sizeId,
-                gatynok1,
-                gatynok2,
-                gatynok3,
                 articleId,
                 changesId: user._id,
                 deletedAt: null
@@ -92,9 +85,6 @@ module.exports = {
                 imageId,
                 sizeId,
                 articleId,
-                gatynok1,
-                gatynok2,
-                gatynok3,
                 user,
             } = req.body;
             const {id} = req.params;
@@ -115,9 +105,6 @@ module.exports = {
                 imageId,
                 sizeId,
                 articleId,
-                gatynok1,
-                gatynok2,
-                gatynok3,
                 changesId: user._id,
                 updatedAt: Date.now(),
                 deletedAt: null
