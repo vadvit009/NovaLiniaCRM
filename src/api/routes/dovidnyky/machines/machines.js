@@ -1,4 +1,4 @@
-const {patchMachine, createMachine} = require("../../../controllers/dovidnyky/machines/machines");
+const {patchMachine, createMachine,getMachines} = require("../../../controllers/dovidnyky/machines/machines");
 const app = require("express").Router();
 const {Dovidnyky} = require('../../../models')
 const {
@@ -8,7 +8,7 @@ const {
 const {readHelper, readByIdHelper, deleteHelper,} = require('../../../utils/CRUDhelper');
 const {roleAccess} = require('../../../utils/RoleHelper');
 
-app.get("/machines", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Machines.Machine));
+app.get("/machines", verifyUserToken, roleAccess(["String2", "String1"]), getMachines);
 
 app.get("/machines/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Machines.Machine));
 

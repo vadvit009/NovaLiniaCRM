@@ -1,6 +1,12 @@
 const {Dovidnyky: {Workers: {Worker}}} = require('../../../models');
 
 module.exports = {
+    getWorkers: async (req, res) => {
+        const workers = await Worker.find()
+            .populate('operationId')
+            .populate('changesId');
+        res.send(workers)
+    },
     createWorker: async (req, res) => {
         try {
             const {
@@ -47,6 +53,8 @@ module.exports = {
                 operationId,
                 changesId,
             }, {new: true})
+                .populate('operationId')
+                .populate('changesId');
             res.send(updatedWorker);
         } catch (e) {
             console.log(e);

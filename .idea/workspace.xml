@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/roztsinka/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/roztsinka/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/roztsinka/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/roztsinka/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +106,7 @@
       <workItem from="1603806120419" duration="14734000" />
       <workItem from="1603824389619" duration="2783000" />
       <workItem from="1603884087033" duration="925000" />
-      <workItem from="1603907062881" duration="2989000" />
+      <workItem from="1603907062881" duration="3878000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,15 @@
 const {Dovidnyky: {Machines: {Machine}}} = require('../../../models');
 
 module.exports = {
+    getMachines: async (req, res) => {
+        const machines = await Machine.find()
+            .populate('modelId')
+            .populate('golkuId')
+            .populate('duymuId')
+            .populate('vyazalniId')
+            .populate('changesId')
+        res.send(machines);
+    },
     createMachine: async (req, res) => {
         const {
             user,
@@ -41,7 +50,12 @@ module.exports = {
                 changesId: user._id
             },
             {new: true}
-        );
+        )
+            .populate('modelId')
+            .populate('golkuId')
+            .populate('duymuId')
+            .populate('vyazalniId')
+            .populate('changesId')
         res.send(updated)
     }
 }

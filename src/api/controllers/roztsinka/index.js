@@ -109,6 +109,17 @@ module.exports = {
                 updatedAt: Date.now(),
                 deletedAt: null
             })
+                .populate('operationId')
+                .populate('machineId')
+                .populate('typeId')
+                .populate('colorId')
+                .populate('asortument')
+                .populate('classId')
+                .populate('seasonId')
+                .populate('imageId')
+                .populate('sizeId')
+                .populate('articleId')
+                .populate('changesId')
             res.send(updated);
         } catch (e) {
             console.log(e);

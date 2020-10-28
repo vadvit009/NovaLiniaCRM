@@ -8,7 +8,6 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
             roztsinka.map(roz => {
                     skladArrayIds.map(personId => {
                             sklad[personId].operationId.map(oper => {
-                                console.log("map person == ",personId)
                                     if (roz.operationId._id.equals(oper._id)) {
                                         if (roz.articleId === sklad.mishok.articleId || roz.articleId === null
                                             && roz.machineId === sklad.mishok.machineId || roz.machineId === null
