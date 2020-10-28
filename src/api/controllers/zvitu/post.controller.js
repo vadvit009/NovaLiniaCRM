@@ -22,7 +22,7 @@ module.exports = {
     },
     rozxidZvitu: async (req, res) => {
         try {
-            let {operationId, workerId, gatynok1, gatynok2, gatynok3,date_rozxodu} = req.body;
+            let {operationId, workerId, gatynok1, gatynok2, gatynok3, date_rozxodu} = req.body;
             const rozxidZvitu = await Zvitu.find({date_rozxodu: null});
             const sum = {
                 gatynok1: 0,
@@ -34,49 +34,55 @@ module.exports = {
                 sum.gatynok2 += zvit.gatynok2
                 sum.gatynok3 += zvit.gatynok3
             })
-            const arrToRequest = [];
+            // const arrToRequest = [];
 
             if (sum.gatynok1 < gatynok1 /*&& sum.gatynok2 < gatynok2 && sum.gatynok3 < gatynok3*/) {
                 return res.status(400).send('No such Quantity')
             } else {
-                rozxidZvitu.forEach(zvit => {
+                const arrToRequest = rozxidZvitu.map(zvit => {
                     if (gatynok1 > 0) {
                         if (zvit.gatynok1 > gatynok1) {
                             gatynok1 = 0
-                            arrToRequest.push(zvit)
+                            return {...zvit._doc, gatynok1: zvit.gatynok1 - gatynok1}
+                            // arrToRequest.push({...zvit._doc, gatynok1: zvit.gatynok1 - gatynok1})
                         } else if (zvit.gatynok1 <= gatynok1) {
-                            arrToRequest.push(zvit)
+                            // arrToRequest.push({...zvit._doc, gatynok1: 0})
                             gatynok1 -= zvit.gatynok1
+                            return {...zvit._doc, gatynok1: 0}
                         }
                     }
-                    console.log("arrToRequest ===", arrToRequest)
                 })
+                console.log("arrToRequest ===", arrToRequest)
 
-                arrToRequest.forEach(item => {
-                    Zvitu.findByIdAndUpdate(item._id,
-                        {
-                            date_rozxodu
-                        },
-                        {new: true})
-                        .then((updatedZvit) => {
-                            Zvitu.create({
-                                ...updatedZvit._doc,
-                                _id: new mongoose.Types.ObjectId(),
-                                date_rozxodu: null
+                arrToRequest.filter(Boolean)
+                    .forEach(item => {
+                        console.log("item === ",item)
+                        Zvitu.findByIdAndUpdate(item._id,
+                            {
+                                ...item,
+                                date_rozxodu
+                            },
+                            {new: true})
+                            .then((updatedZvit) => {
+                                console.log("updatedZvit === ", updatedZvit._doc)
+                                Zvitu.create({
+                                    ...updatedZvit._doc,
+                                    _id: new mongoose.Types.ObjectId(),
+                                    date_rozxodu: null
+                                })
+                                    .then((created) => {
+                                        console.log("created === ", created)
+                                    })
+                                    .catch(e => {
+                                        console.log(e)
+                                        res.sendStatus(400)
+                                    })
                             })
-                                .then((created) => {
-                                    console.log("created === ", created)
-                                })
-                                .catch(e => {
-                                    console.log(e)
-                                    res.sendStatus(400)
-                                })
-                        })
-                        .catch(e => {
-                            console.log(e)
-                            res.sendStatus(400)
-                        })
-                })
+                            .catch(e => {
+                                console.log(e)
+                                res.sendStatus(400)
+                            })
+                    })
                 res.sendStatus(200);
             }
             // if (zvit.gatynok1 <= gatynok1) {
