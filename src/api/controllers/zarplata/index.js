@@ -91,32 +91,38 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
 
 module.exports = {
     zpSklad1: async (req, res) => {
+        try {
+            const sklad1 = await Sklad1.find({})
+                .populate(
+                    {
+                        path: 'vyazalId',
+                        populate:
+                            {path: 'operationId', options: {retainNullValues: true}}
+                    }
+                ).populate(
+                    {
+                        path: 'masterId',
+                        populate:
+                            {path: 'operationId', options: {retainNullValues: true}}
+                    }
+                ).populate('mishok');
 
-        const sklad1 = await Sklad1.find({})
-            .populate(
-                {
-                    path: 'vyazalId',
-                    populate:
-                        {path: 'operationId', options: {retainNullValues: true}}
-                }
-            ).populate(
-                {
-                    path: 'masterId',
-                    populate:
-                        {path: 'operationId', options: {retainNullValues: true}}
-                }
-            ).populate('mishok');
-
-        const roztsinka = await Roztsinka.find({})
-            .populate(
-                {
-                    path: 'operationId',
-                    options: {retainNullValues: true}
-                }
-            );
-        // const arrOfWorker = Object.keys(zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka)).map(id => ObjectId(id))
-        // const workers = await Worker.find({_id: {$in: arrOfWorker}});
-        res.json({zp_sklad1: zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka)});
+            const roztsinka = await Roztsinka.find({})
+                .populate(
+                    {
+                        path: 'operationId',
+                        options: {retainNullValues: true}
+                    }
+                );
+            const {zp} = zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka);
+            console.log(zp)
+            // const arrOfWorker = Object.keys(zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka)).map(id => ObjectId(id))
+            // const workers = await Worker.find({_id: {$in: arrOfWorker}});
+            res.json({zp_sklad1: zp});
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400)
+        }
     },
 
     zpSklad2: async (req, res) => {
