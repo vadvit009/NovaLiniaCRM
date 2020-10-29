@@ -22,6 +22,27 @@ module.exports = {
         }
 
     },
+    getOneRoztsinka: async (req, res) => {
+        try {
+            const {id} = req.params;
+            const populated = await Roztsinka.findById(id)
+                .populate('operationId')
+                .populate('machineId')
+                .populate('typeId')
+                .populate('colorId')
+                .populate('asortument')
+                .populate('classId')
+                .populate('seasonId')
+                .populate('imageId')
+                .populate('sizeId')
+                .populate('articleId')
+                .populate('changesId')
+            res.send(populated);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(400)
+        }
+    },
     createRoztsinka: async (req, res) => {
         try {
             const {
