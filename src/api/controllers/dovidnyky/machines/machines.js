@@ -10,6 +10,16 @@ module.exports = {
             .populate('changesId')
         res.send(machines);
     },
+    getMachine: async (req, res) => {
+        const {id} = req.body;
+        const machine = await Machine.findById(id)
+            .populate('modelId')
+            .populate('golkuId')
+            .populate('duymuId')
+            .populate('vyazalniId')
+            .populate('changesId')
+        res.send(machine);
+    },
     createMachine: async (req, res) => {
         const {
             user,

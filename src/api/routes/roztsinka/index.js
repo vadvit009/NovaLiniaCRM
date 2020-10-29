@@ -5,7 +5,7 @@ const {
 } = require("../../middleware/jwtAuth");
 
 const {createRoztsinka, updateRoztsinka, getRoztsinka,getOneRoztsinka} = require("../../controllers/roztsinka");
-const {readHelper, readByIdHelper, deleteHelper} = require("../../utils/CRUDhelper");
+const {deleteHelper} = require("../../utils/CRUDhelper");
 const {roleAccess} = require('../../utils/RoleHelper');
 
 app.get("/roztsinka", verifyUserToken, roleAccess(["String2", "String1"]), getRoztsinka);
