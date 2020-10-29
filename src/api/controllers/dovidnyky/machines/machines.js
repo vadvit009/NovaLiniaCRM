@@ -11,7 +11,7 @@ module.exports = {
         res.send(machines);
     },
     getMachine: async (req, res) => {
-        const {id} = req.body;
+        const {id} = req.params;
         const machine = await Machine.findById(id)
             .populate('modelId')
             .populate('golkuId')
