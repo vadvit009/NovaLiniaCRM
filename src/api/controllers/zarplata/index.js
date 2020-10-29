@@ -2,7 +2,6 @@ const {Skladu: {Sklad2, Sklad3, Sklad4, Sklad1}, Roztsinka, Dovidnyky: {Workers:
 // const {ObjectId} = require("mongoose").Types;
 
 const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
-
     const zp = {};
 
     skladu.map(sklad => {
@@ -114,8 +113,7 @@ module.exports = {
                         options: {retainNullValues: true}
                     }
                 );
-            const {zp} = zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka);
-            console.log(zp)
+            const zp = zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka);
             // const arrOfWorker = Object.keys(zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka)).map(id => ObjectId(id))
             // const workers = await Worker.find({_id: {$in: arrOfWorker}});
             res.json({zp_sklad1: zp});
