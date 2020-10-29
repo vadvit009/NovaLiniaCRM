@@ -78,27 +78,30 @@ module.exports = {
                 articleId,
             } = req.body;
             const {id} = req.params;
-//TODO IF DATE_ROZXODU === NULL
-            const updated = await Sklad1.findByIdAndUpdate(id, {
-                vyazalId,
-                masterId,
-                machineId,
-                date_prixod,
-                gatynok1,
-                gatynok2,
-                gatynok3,
-                typeId,
-                asortumentId,
-                imageId,
-                colorId,
-                sizeId,
-                classId,
-                articleId,
-                changesId: user._id,
-                updatedAt: Date.now(),
-                deletedAt: null
-            })
-            res.send(updated);
+//TODO IF DATE_ROZXODU === NULL /done
+            const isDateRozxoduNull = await Sklad1.findById(id);
+            if (isDateRozxoduNull.date_rozsxodu) {
+                const updated = await Sklad1.findByIdAndUpdate(id, {
+                    vyazalId,
+                    masterId,
+                    machineId,
+                    date_prixod,
+                    gatynok1,
+                    gatynok2,
+                    gatynok3,
+                    typeId,
+                    asortumentId,
+                    imageId,
+                    colorId,
+                    sizeId,
+                    classId,
+                    articleId,
+                    changesId: user._id,
+                    updatedAt: Date.now(),
+                    deletedAt: null
+                })
+                res.send(updated);
+            } else res.sendStatus(400);
         } catch (e) {
             console.log(e);
             res.sendStatus(400);
@@ -246,10 +249,10 @@ module.exports = {
             const agg = await Sklad1.find({
                 $and:
                     [
-                        {date_prixod: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                        {date_prixod: {$lte: new Date(plusDay)}},
                         {
                             $or: [
-                                {date_rozxodu: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                                {date_rozxodu: {$lte: new Date(plusDay)}},
                                 {date_rozxodu: null},
                             ]
                         }

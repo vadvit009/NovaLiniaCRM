@@ -4,13 +4,13 @@ const {
     verifyUserToken
 } = require("../../../middleware/jwtAuth");
 
-const {readByIdHelper, deleteHelper} = require('../../../utils/CRUDhelper');
+const {deleteHelper} = require('../../../utils/CRUDhelper');
 const {roleAccess} = require('../../../utils/RoleHelper');
-const {Workers: {createWorker, patchWorker, getWorkers}} = require("../../../controllers/dovidnyky");
+const {Workers: {createWorker, patchWorker, getWorkers,getWorker}} = require("../../../controllers/dovidnyky");
 
 app.get("/workers", verifyUserToken, roleAccess(["String2", "String1"]), getWorkers);
 
-app.get("/workers/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Workers.Worker));
+app.get("/workers/:id", verifyUserToken, roleAccess(["String2", "String1"]), getWorker);
 
 app.post("/workers", verifyUserToken, roleAccess(["String2", "String1"]), createWorker);
 

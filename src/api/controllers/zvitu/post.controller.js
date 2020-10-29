@@ -1,4 +1,5 @@
 const { Zvitu } = require('../../models/zvitu');
+const {Dovidnyky:{Workers:{Worker}}} =require('../../models')
 const mongoose = require('mongoose');
 
 module.exports = {
@@ -24,6 +25,8 @@ module.exports = {
     rozxidZvitu: async (req, res) => {
         try {
             let { user, operationId, workerId, gatynok1, gatynok2, gatynok3, date_rozxodu } = req.body;
+            const isValidWorker = await Worker.findById(workerId);
+            if (isValidWorker.operationId.includes(operationId)){}
             const rozxidZvitu = await Zvitu.find({ date_rozxodu: null });
             const sum = {
                 gatynok1: 0,

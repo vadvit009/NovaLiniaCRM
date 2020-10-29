@@ -1,4 +1,5 @@
-const {Skladu: {Sklad2, Sklad3, Sklad4, Sklad1}, Roztsinka} = require("../../models");
+const {Skladu: {Sklad2, Sklad3, Sklad4, Sklad1}, Roztsinka, Dovidnyky: {Workers: {Worker}}} = require("../../models");
+// const {ObjectId} = require("mongoose").Types;
 
 const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
 
@@ -113,7 +114,8 @@ module.exports = {
                     options: {retainNullValues: true}
                 }
             );
-
+        // const arrOfWorker = Object.keys(zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka)).map(id => ObjectId(id))
+        // const workers = await Worker.find({_id: {$in: arrOfWorker}});
         res.json({zp_sklad1: zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka)});
     },
 

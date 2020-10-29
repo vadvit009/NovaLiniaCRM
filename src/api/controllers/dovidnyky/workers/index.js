@@ -7,6 +7,13 @@ module.exports = {
             .populate('changesId');
         res.send(workers)
     },
+    getWorker: async (req, res) => {
+        const {id} = req.params;
+        const worker = await Worker.findById(id)
+            .populate('operationId')
+            .populate('changesId');
+        res.send(worker)
+    },
     createWorker: async (req, res) => {
         try {
             const {
