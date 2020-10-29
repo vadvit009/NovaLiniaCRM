@@ -1,12 +1,12 @@
 const moment = require("moment");
-const { Zvitu } = require('../../models/zvitu')
+const {Zvitu} = require('../../models/zvitu')
 
 module.exports = {
     prixod: async (req, res) => {
         try {
-            const prixod = await Zvitu.find({ date_rozxodu: null })
+            const prixod = await Zvitu.find({date_rozxodu: null})
                 .populate('operationId')
-                .populate({ path: 'workerId', populate: { path: 'operationId' } })
+                .populate({path: 'workerId', populate: {path: 'operationId'}})
                 .populate('changesId');
             res.send(prixod);
         } catch (e) {
@@ -16,9 +16,9 @@ module.exports = {
     },
     rozxodu: async (req, res) => {
         try {
-            const rozxod = await Zvitu.find({ date_rozxodu: { $ne: null } })
+            const rozxod = await Zvitu.find({date_rozxodu: {$ne: null}})
                 .populate('operationId')
-                .populate({ path: 'workerId', populate: { path: 'operationId' } })
+                .populate({path: 'workerId', populate: {path: 'operationId'}})
                 .populate('changesId');
             res.send(rozxod);
         } catch (e) {
@@ -28,7 +28,7 @@ module.exports = {
     },
     zalushok: async (req, res) => {
         try {
-            const { day } = req.query;
+            const {day} = req.query;
             // const formattedStart = moment.unix(day / 1000).format('YYYY-MM-DD');
             // const formattedFinish = moment.unix(day / 1000).add(1, 'days').format('YYYY-MM-DD');
             const plusDay = moment(day).add(1, 'days').format('YYYY-MM-DD');
@@ -40,17 +40,17 @@ module.exports = {
             const agg = await Zvitu.find({
                 $and:
                     [
-                        { date_prixod: { /*$gte: new Date(day),*/ $lte: new Date(plusDay) } },
+                        {date_prixodu: {$lte: new Date(plusDay)}},
                         {
                             $or: [
-                                { date_rozxodu: { /*$gte: new Date(day), */$lte: new Date(plusDay) } },
-                                { date_rozxodu: null },
+                                {date_rozxodu: {$lte: new Date(plusDay)}},
+                                {date_rozxodu: null},
                             ]
                         }
                     ]
             })
                 .populate('operationId')
-                .populate({ path: 'workerId', populate: { path: 'operationId' } })
+                .populate({path: 'workerId', populate: {path: 'operationId'}})
                 .populate('changesId')
             res.json(agg)
         } catch (e) {
