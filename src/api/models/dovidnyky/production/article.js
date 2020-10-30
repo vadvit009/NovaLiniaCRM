@@ -11,7 +11,6 @@ const ArticleSchema = new Schema(
         colorId: {type: mongoose.ObjectId, ref: "ProdColor"},
         sizeId: {type: mongoose.ObjectId, ref: "ProdSize"},
         classId: {type: mongoose.ObjectId, ref: "ProdClass"},
-        articleId: {type: mongoose.ObjectId, ref: "ProdArticle"},
         seasonId: {type: mongoose.ObjectId, ref: "ProdSeason"},
         changesId: {type: mongoose.ObjectId, ref: "Users"},
         deletedAt: Date

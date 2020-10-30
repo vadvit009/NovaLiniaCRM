@@ -9,7 +9,6 @@ module.exports = {
             .populate('colorId')
             .populate('sizeId')
             .populate('classId')
-            .populate('articleId')
             .populate('seasonId')
             .populate('changesId');
         res.send(articles)
@@ -23,7 +22,6 @@ module.exports = {
             .populate('colorId')
             .populate('sizeId')
             .populate('classId')
-            .populate('articleId')
             .populate('seasonId')
             .populate('changesId');
         res.send(article)
@@ -39,7 +37,6 @@ module.exports = {
                 colorId,
                 sizeId,
                 classId,
-                articleId,
                 seasonId,
                 user
             } = req.body;
@@ -52,7 +49,6 @@ module.exports = {
                 colorId,
                 sizeId,
                 classId,
-                articleId,
                 seasonId,
                 changesId: user._id,
                 deletedAt: null
@@ -73,7 +69,6 @@ module.exports = {
             colorId,
             sizeId,
             classId,
-            articleId,
             seasonId,
             user
         } = req.body;
@@ -88,7 +83,6 @@ module.exports = {
                 colorId,
                 sizeId,
                 classId,
-                articleId,
                 seasonId,
                 changesId: user._id,
                 deletedAt: null
@@ -100,7 +94,6 @@ module.exports = {
             .populate('colorId')
             .populate('sizeId')
             .populate('classId')
-            .populate('articleId')
             .populate('seasonId')
             .populate('changesId');
         res.send(updated)
