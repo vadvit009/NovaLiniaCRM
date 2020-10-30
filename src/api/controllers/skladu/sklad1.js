@@ -34,7 +34,7 @@ module.exports = {
                 colorId,
                 sizeId,
                 seasonId,
-                barcode: getNextSequence('barcode'),
+                barcode: await getNextSequence('barcode'),
                 classId,
                 articleId,
                 date_prixod,
