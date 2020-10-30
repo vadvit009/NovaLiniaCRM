@@ -4,11 +4,27 @@ const {Zvitu} = require('../../models/zvitu')
 module.exports = {
     prixod: async (req, res) => {
         try {
-            const prixod = await Zvitu.find({date_rozxodu: null})
-                .populate('operationId')
-                .populate({path: 'workerId', populate: {path: 'operationId'}})
-                .populate('changesId');
-            res.send(prixod);
+            const {operationId, from, to} = req.query;
+            if (operationId && from && to) {
+                const prixod = await Zvitu.find({
+                    date_rozxodu: null,
+                    operationId: operationId,
+                    date_prixodu: {
+                        $gte: new Date(from),
+                        $lte: new Date(to)
+                    }
+                })
+                    .populate('operationId')
+                    .populate({path: 'workerId', populate: {path: 'operationId'}})
+                    .populate('changesId');
+                res.send(prixod);
+            } else {
+                const prixod = await Zvitu.find({date_rozxodu: null})
+                    .populate('operationId')
+                    .populate({path: 'workerId', populate: {path: 'operationId'}})
+                    .populate('changesId');
+                res.send(prixod);
+            }
         } catch (e) {
             console.log(e);
             res.sendStatus(400)
@@ -16,11 +32,27 @@ module.exports = {
     },
     rozxodu: async (req, res) => {
         try {
-            const rozxod = await Zvitu.find({date_rozxodu: {$ne: null}})
-                .populate('operationId')
-                .populate({path: 'workerId', populate: {path: 'operationId'}})
-                .populate('changesId');
-            res.send(rozxod);
+            const {operationId, from, to} = req.query;
+            if (operationId && from && to) {
+                const rozxod = await Zvitu.find({
+                    date_rozxodu: {$ne: null},
+                    operationId: operationId,
+                    date_rozxodu: {
+                        $gte: new Date(from),
+                        $lte: new Date(to)
+                    }
+                })
+                    .populate('operationId')
+                    .populate({path: 'workerId', populate: {path: 'operationId'}})
+                    .populate('changesId');
+                res.send(rozxod);
+            } else {
+                const rozxod = await Zvitu.find({date_rozxodu: {$ne: null}})
+                    .populate('operationId')
+                    .populate({path: 'workerId', populate: {path: 'operationId'}})
+                    .populate('changesId');
+                res.send(rozxod);
+            }
         } catch (e) {
             console.log(e);
             res.sendStatus(400)

@@ -21,7 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/article.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/production/article.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/zvitu/get.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/zvitu/get.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/zvitu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/zvitu/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/zvitu/post.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/zvitu/post.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/models/zvitu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/zvitu/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/zvitu/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/zvitu/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +113,8 @@
       <workItem from="1603884087033" duration="925000" />
       <workItem from="1603907062881" duration="6248000" />
       <workItem from="1603967576113" duration="681000" />
-      <workItem from="1603974288410" duration="14788000" />
+      <workItem from="1603974288410" duration="14900000" />
+      <workItem from="1604053386042" duration="5451000" />
     </task>
     <servers />
   </component>
@@ -140,10 +146,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" width="1638" height="732" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1603737800341" />
-    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1603992350875">
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1604056689566">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1603992350875" />
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604056689566" />
     <state x="1096" y="242" key="run.anything.popup" timestamp="1603800919314">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

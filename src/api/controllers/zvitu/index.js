@@ -1,6 +1,7 @@
 const { zalushok, prixod, rozxodu } = require('./get.controller');
 const { patchPruxodZvitu } = require('./patch.controller');
 const { prixodZvitu, rozxidZvitu } = require('./post.controller');
+const { deleteRozxid} = require('./delete.controller');
 
 module.exports = {
     patchPruxodZvitu,
@@ -8,5 +9,6 @@ module.exports = {
     rozxidZvitu,
     zalushok,
     prixod,
-    rozxodu
+    rozxodu,
+    deleteRozxid
 }

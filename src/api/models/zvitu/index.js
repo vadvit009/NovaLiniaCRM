@@ -11,6 +11,7 @@ const ZvituSchema = new Schema(
         date_rozxodu: Date,
         date_prixodu: Date,
         changesId: {type: mongoose.ObjectId, ref: "Users"},
+        copyId: [{type: mongoose.ObjectId, ref: "Zvitu"}],
         deletedAt: Date
     },
     {

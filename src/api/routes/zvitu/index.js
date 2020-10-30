@@ -4,7 +4,7 @@ const {
     verifyUserToken
 } = require("../../middleware/jwtAuth");
 
-const { zalushok, prixod, rozxodu, prixodZvitu, patchPruxodZvitu, rozxidZvitu } = require('../../controllers/zvitu');
+const { zalushok, prixod, rozxodu, prixodZvitu, patchPruxodZvitu, rozxidZvitu, deleteRozxid } = require('../../controllers/zvitu');
 const { readByIdHelper, readHelper, deleteHelper } = require('../../utils/CRUDhelper')
 
 const { Zvitu } = require('../../models');
@@ -24,5 +24,7 @@ app.get("/zvitu_zalushok", verifyUserToken, zalushok);
 app.patch("/zvitu/:id", verifyUserToken, patchPruxodZvitu);
 
 app.delete("/zvitu/:id", verifyUserToken, deleteHelper(Zvitu));
+
+app.delete("/zvitu_rozxid/:id", verifyUserToken, deleteRozxid);
 
 module.exports = app;
