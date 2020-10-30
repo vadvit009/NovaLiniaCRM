@@ -54,7 +54,7 @@ module.exports = {
                 deletedAt: null
             });
 
-            res.send({mishokId: mishok._id, barcode});
+            res.send({mishokId: mishok._id, barcode:mishok.barcode});
         } catch (e) {
             console.log(e);
             res.sendStatus(400);

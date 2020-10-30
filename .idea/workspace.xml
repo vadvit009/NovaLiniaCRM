@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/priaga/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/dovidnyky/materials/materials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/dovidnyky/materials/materials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/models/mishku/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/models/mishku/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/materials.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/materials.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/priaga/priaga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/priaga/priaga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/utils/getNextId.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/utils/getNextId.js" afterDir="false" />
-    </list>
+    <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +106,7 @@
       <workItem from="1603907062881" duration="6248000" />
       <workItem from="1603967576113" duration="681000" />
       <workItem from="1603974288410" duration="14900000" />
-      <workItem from="1604053386042" duration="17025000" />
+      <workItem from="1604053386042" duration="17560000" />
     </task>
     <servers />
   </component>
