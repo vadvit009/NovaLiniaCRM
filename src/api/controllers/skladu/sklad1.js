@@ -21,6 +21,7 @@ module.exports = {
                 imageId,
                 colorId,
                 sizeId,
+                seasonId,
                 classId,
                 articleId,
                 date_prixod,
@@ -32,6 +33,7 @@ module.exports = {
                 imageId,
                 colorId,
                 sizeId,
+                seasonId,
                 barcode: getNextSequence('barcode'),
                 classId,
                 articleId,
@@ -78,7 +80,6 @@ module.exports = {
                 articleId,
             } = req.body;
             const {id} = req.params;
-//TODO IF DATE_ROZXODU === NULL /done
             const isDateRozxoduNull = await Sklad1.findById(id);
             if (isDateRozxoduNull.date_rozsxodu) {
                 const updated = await Sklad1.findByIdAndUpdate(id, {
@@ -200,40 +201,78 @@ module.exports = {
     },
 
     getSklad: async (req, res) => {
-        const sklad1 = await Sklad1.find({})
-            .populate({
-                path: 'mishok',
-                populate: {path: "asortumentId", select: "name -_id"}
-            })
-            .populate({
-                path: 'mishok',
-                populate: {path: "imageId", select: "name -_id"}
-            })
-            .populate({
-                path: 'mishok',
-                populate: {path: "colorId", select: "name -_id"}
-            })
-            .populate({
-                path: 'mishok',
-                populate: {path: "typeId", select: "name -_id"}
-            })
-            .populate({
-                path: 'mishok',
-                populate: {path: "sizeId", select: "name -_id"}
-            })
-            .populate({
-                path: 'mishok',
-                populate: {path: "classId", select: "name -_id"}
-            })
-            .populate({
-                path: 'mishok',
-                populate: {path: "articleId", select: "name -_id"}
-            })
-            .populate('vyazalId')
-            .populate('masterId')
-            .populate('machineId')
-            .populate({path: 'changesId', select: 'firstName'})
-        res.send(sklad1);
+        const {from, to} = req.query;
+        if (from && to) {
+            const sklad1 = await Sklad1.find({date_prixod: {$gte: new Date(from), $lte: new Date(to)}})
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "asortumentId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "imageId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "colorId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "typeId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "sizeId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "classId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "articleId", select: "name -_id"}
+                })
+                .populate('vyazalId')
+                .populate('masterId')
+                .populate('machineId')
+                .populate({path: 'changesId', select: 'firstName'})
+            res.send(sklad1);
+        } else {
+            const sklad1 = await Sklad1.find({})
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "asortumentId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "imageId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "colorId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "typeId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "sizeId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "classId", select: "name -_id"}
+                })
+                .populate({
+                    path: 'mishok',
+                    populate: {path: "articleId", select: "name -_id"}
+                })
+                .populate('vyazalId')
+                .populate('masterId')
+                .populate('machineId')
+                .populate({path: 'changesId', select: 'firstName'})
+            res.send(sklad1);
+        }
     },
     zalushok: async (req, res) => {
         try {

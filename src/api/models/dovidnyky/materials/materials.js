@@ -14,6 +14,7 @@ const schema = new Schema(
         date_prixod: Date,
         date_rozxodu: Date,
         changesId: {type: mongoose.ObjectId, ref: "Users"},
+        copyId: {type: mongoose.ObjectId, ref: "Materials"},
         deletedAt: Date
     },
     {

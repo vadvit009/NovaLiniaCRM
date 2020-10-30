@@ -16,6 +16,8 @@ app.get("/priaga/:id", verifyUserToken, roleAccess(["String2", "String1"]), read
 
 app.post("/priaga", verifyUserToken, roleAccess(["String2", "String1"]), prixodPriaga);
 
+app.post("/priaga_rozxid", verifyUserToken, roleAccess(["String2", "String1"]), rozxodPriaga);
+
 app.patch("/priaga/:id", verifyUserToken, roleAccess(["String2", "String1"]), rozxodPriaga);
 
 app.delete("/priaga/:id", verifyUserToken, roleAccess(["String2", "String1"]), deleteHelper(Dovidnyky.Priaga.Priaga));

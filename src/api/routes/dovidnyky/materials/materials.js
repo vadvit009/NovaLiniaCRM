@@ -16,7 +16,9 @@ app.get("/materials/:id", verifyUserToken, roleAccess(["String2", "String1"]), r
 
 app.post("/materials", verifyUserToken, roleAccess(["String2", "String1"]), prixodMaterials);
 
-app.patch("/materials/:id", verifyUserToken, roleAccess(["String2", "String1"]), rozxodMaterials);
+app.post("/materials_rozxid", verifyUserToken, roleAccess(["String2", "String1"]), rozxodMaterials);
+
+app.delete("/materials/:id", verifyUserToken, roleAccess(["String2", "String1"]), /*deletePrixodMaterials*/);
 
 app.delete("/materials/:id", verifyUserToken, roleAccess(["String2", "String1"]), deleteHelper(Dovidnyky.Materials.Materials));
 

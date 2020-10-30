@@ -11,6 +11,7 @@ const MishkuSchema = new Schema(
         asortumentId: {type: mongoose.ObjectId, ref: "ProdAsortument"},
         imageId: {type: mongoose.ObjectId, ref: "ProdImage"},
         colorId: {type: mongoose.ObjectId, ref: "ProdColor"},
+        seasonId: {type: mongoose.ObjectId, ref: "ProdSeason"},
         sizeId: {type: mongoose.ObjectId, ref: "ProdSize"},
         classId: {type: mongoose.ObjectId, ref: "ProdClass"},
         articleId: {type: mongoose.ObjectId, ref: "ProdArticle"},

@@ -1,5 +1,6 @@
 const {Dovidnyky: {Priaga: {Priaga}}} = require('../../../models');
 const moment = require('moment');
+const mongoose = require('mongoose');
 
 module.exports = {
     prixodPriaga: async (req, res) => {
@@ -27,7 +28,7 @@ module.exports = {
                 date_rozxodu: null,
                 changesId: user._id,
             })
-            res.json({prixodMaterials: created})
+            res.json({prixodPriaga: created})
         } catch (e) {
             console.log(e);
             res.sendStatus(400)
@@ -35,7 +36,7 @@ module.exports = {
     },
     rozxodPriaga: async (req, res) => {
         try {
-            const {
+            let {
                 user,
                 quantity,
                 vendorId,
@@ -46,19 +47,49 @@ module.exports = {
                 colorId,
                 date_rozxodu,
             } = req.body;
-            const {id} = req.params;
-            const updated = await Priaga.findByIdAndUpdate(id, {
-                quantity,
-                vendorId,
-                typeId,
-                dilankaRozxodyId,
-                surovunaId,
-                tovtshinaId,
-                colorId,
-                date_rozxodu,
-                changesId: user._id,
-            })
-            res.json({rozxodMaterials: updated})
+            const rozxidPriaga = await Priaga.find({date_rozxodu: null})
+            let sum = 0;
+            rozxidPriaga.forEach(priaga => {
+                sum += priaga.quantity
+            });
+            if (quantity > sum) {
+                res.send('No such Quantity').status(400)
+            } else {
+                const arrToRequest = rozxidPriaga.map(priaga => {
+                    if (priaga.quantity > quantity) {
+                        const rez = priaga.quantity - quantity
+                        quantity = 0
+                        return {...priaga._doc, quantity: rez}
+                    } else if (priaga.quantity <= quantity) {
+                        quantity -= priaga.quantity
+                        return {...priaga._doc, quantity: 0}
+                    }
+                });
+                arrToRequest.filter(Boolean).forEach(item => {
+                    Priaga.findByIdAndUpdate(item._id, {
+                        changesId: user._id,
+                        dilankaRozxodyId,
+                        date_rozxodu
+                    }, {new: true}).then(updatedPriaga => {
+                        Priaga.create({
+                            ...updatedPriaga._doc,
+                            quantity: item.quantity,
+                            copyId: [item._id],
+                            date_rozxodu: null,
+                            _id: new mongoose.Types.ObjectId()
+                        }).then(created => {
+                            console.log(created)
+                        }).catch(e => {
+                            console.log(e)
+                            res.sendStatus(400)
+                        })
+                    }).catch(e => {
+                        console.log(e);
+                        res.sendStatus(400)
+                    })
+                })
+                res.sendStatus(200)
+            }
         } catch (e) {
             console.log(e);
             res.sendStatus(400)
