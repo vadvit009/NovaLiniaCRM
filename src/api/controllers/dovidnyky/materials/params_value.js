@@ -7,6 +7,13 @@ module.exports = {
             .populate('changesId');
         res.send(data);
     },
+    getOneMaterialsParamsValue: async (req, res) => {
+        const {id} = req.params;
+        const data = await MaterialsParamsValue.findById(id)
+            .populate('paramId')
+            .populate('changesId');
+        res.send(data);
+    },
     createMaterialsParamsValue: async (req, res) => {
         const {name, user, paramId} = req.body;
         const created = await MaterialsParamsValue.create({name, changesId: user._id, paramId});

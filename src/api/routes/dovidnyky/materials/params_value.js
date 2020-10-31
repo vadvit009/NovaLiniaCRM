@@ -1,4 +1,4 @@
-const {patchMaterialsParamsValue, createMaterialsParamsValue, getMaterialsParamsValue} = require("../../../controllers/dovidnyky/materials/params_value");
+const {patchMaterialsParamsValue, createMaterialsParamsValue, getMaterialsParamsValue,getOneMaterialsParamsValue} = require("../../../controllers/dovidnyky/materials/params_value");
 const app = require("express").Router();
 const {Dovidnyky} = require('../../../models')
 const {
@@ -10,7 +10,7 @@ const {roleAccess} = require('../../../utils/RoleHelper');
 
 app.get("/materials_params_value", verifyUserToken, roleAccess(["String2", "String1"]), getMaterialsParamsValue);
 
-app.get("/materials_params_value/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Materials.MaterialsParamsValue));
+app.get("/materials_params_value/:id", verifyUserToken, roleAccess(["String2", "String1"]), getOneMaterialsParamsValue);
 
 app.post("/materials_params_value", verifyUserToken, roleAccess(["String2", "String1"]), createMaterialsParamsValue);
 
