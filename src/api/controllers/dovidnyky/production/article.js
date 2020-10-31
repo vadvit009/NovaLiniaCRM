@@ -2,16 +2,30 @@ const {Dovidnyky: {Production: {ProdArticle}}} = require('../../../models');
 
 module.exports = {
     getArticles: async (req, res) => {
-        const articles = await ProdArticle.find()
-            .populate('typeId')
-            .populate('asortumentId')
-            .populate('imageId')
-            .populate('colorId')
-            .populate('sizeId')
-            .populate('classId')
-            .populate('seasonId')
-            .populate('changesId');
-        res.send(articles)
+        const {search} = req.query;
+        if (search) {
+            const articles = await ProdArticle.find({$regex: {name: search}})
+                .populate('typeId')
+                .populate('asortumentId')
+                .populate('imageId')
+                .populate('colorId')
+                .populate('sizeId')
+                .populate('classId')
+                .populate('seasonId')
+                .populate('changesId');
+            res.send(articles)
+        } else {
+            const articles = await ProdArticle.find()
+                .populate('typeId')
+                .populate('asortumentId')
+                .populate('imageId')
+                .populate('colorId')
+                .populate('sizeId')
+                .populate('classId')
+                .populate('seasonId')
+                .populate('changesId');
+            res.send(articles)
+        }
     },
     getArticle: async (req, res) => {
         const {id} = req.params;
