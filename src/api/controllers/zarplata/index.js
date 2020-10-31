@@ -1,4 +1,4 @@
-const {Skladu: {Sklad2, Sklad3, Sklad4, Sklad1}, Roztsinka, Dovidnyky: {Workers: {Worker}}} = require("../../models");
+const {Skladu: {Sklad2, Sklad3, Sklad4, Sklad1}, Roztsinka, Dovidnyky: {Workers: {Worker}}, Zvitu} = require("../../models");
 // const {ObjectId} = require("mongoose").Types;
 
 const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
@@ -188,4 +188,64 @@ module.exports = {
             );
         res.json({zp_sklad2: zarplataHelper(['packId'], sklad4, roztsinka)})
     },
+
+    zpRest: async (req, res) => {
+        const zvitu = await Zvitu.find({date_rozxodu: {$ne: null}})
+            .populate('operationId')
+            .populate({path: 'workerId', populate: {path: 'operationId'}})
+            .populate('changesId');
+
+        const roztsinka = await Roztsinka.find({})
+            .populate(
+                {
+                    path: 'operationId',
+                    options: {retainNullValues: true}
+                }
+            );
+
+        const zp = {};
+        zvitu.map(zvit => {
+            roztsinka.map(roz => {
+                if (zvit.operationId._id.equals(roz.operationId._id)) {
+                    if (!zp[zvit.workerId._id]) {
+                        zp[zvit.workerId._id] = {}
+                        zp[zvit.workerId._id].zp = 0
+                        zp[zvit.workerId._id].zminu = 0
+                        zp[zvit.workerId._id].prod_quantity = 0
+                    }
+                    if (roz.gatynok === 1) {
+                        zp[zvit.workerId._id].zp += roz.price * zvit.gatynok1
+                        zp[zvit.workerId._id].prod_quantity += zvit.gatynok1
+                        const filtered = zvitu.filter(workerZvit =>
+                            workerZvit.workerId._id.equals(zvit.workerId._id)
+                        );
+                        const zmina = new Set(filtered.map(zmina =>
+                            zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                        zp[zvit.workerId._id].zminu = zmina
+                    }
+                    if (roz.gatynok === 2) {
+                        zp[zvit.workerId._id].zp += roz.price * zvit.gatynok2
+                        zp[zvit.workerId._id].prod_quantity += zvit.gatynok2
+                        const filtered = zvitu.filter(workerZvit =>
+                            workerZvit.workerId._id.equals(zvit.workerId._id)
+                        );
+                        const zmina = new Set(filtered.map(zmina =>
+                            zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                        zp[zvit.workerId._id].zminu = zmina
+                    }
+                    if (roz.gatynok === 3) {
+                        zp[zvit.workerId._id].zp += roz.price * zvit.gatynok3
+                        zp[zvit.workerId._id].prod_quantity += zvit.gatynok3
+                        const filtered = zvitu.filter(workerZvit =>
+                            workerZvit.workerId._id.equals(zvit.workerId._id)
+                        );
+                        const zmina = new Set(filtered.map(zmina =>
+                            zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                        zp[zvit.workerId._id].zminu = zmina
+                    }
+                }
+            })
+        })
+        res.send(zp)
+    }
 }
