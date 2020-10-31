@@ -2,13 +2,24 @@ const {Dovidnyky: {Machines: {Machine}}} = require('../../../models');
 
 module.exports = {
     getMachines: async (req, res) => {
-        const machines = await Machine.find()
-            .populate('modelId')
-            .populate('golkuId')
-            .populate('duymuId')
-            .populate('vyazalniId')
-            .populate('changesId')
-        res.send(machines);
+        const {search} = req.query;
+        if (search) {
+            const machines = await Machine.find({name: {$regex: search}})
+                .populate('modelId')
+                .populate('golkuId')
+                .populate('duymuId')
+                .populate('vyazalniId')
+                .populate('changesId')
+            res.send(machines);
+        } else {
+            const machines = await Machine.find()
+                .populate('modelId')
+                .populate('golkuId')
+                .populate('duymuId')
+                .populate('vyazalniId')
+                .populate('changesId')
+            res.send(machines);
+        }
     },
     getMachine: async (req, res) => {
         const {id} = req.params;

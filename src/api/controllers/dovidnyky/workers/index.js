@@ -2,10 +2,18 @@ const {Dovidnyky: {Workers: {Worker}}} = require('../../../models');
 
 module.exports = {
     getWorkers: async (req, res) => {
-        const workers = await Worker.find()
-            .populate('operationId')
-            .populate('changesId');
-        res.send(workers)
+        const {search} = req.query;
+        if (search) {
+            const workers = await Worker.find({sName: {$regex: search}})
+                .populate('operationId')
+                .populate('changesId');
+            res.send(workers)
+        } else {
+            const workers = await Worker.find()
+                .populate('operationId')
+                .populate('changesId');
+            res.send(workers)
+        }
     },
     getWorker: async (req, res) => {
         const {id} = req.params;

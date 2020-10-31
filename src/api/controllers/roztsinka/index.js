@@ -3,19 +3,36 @@ const {Roztsinka} = require('../../models');
 module.exports = {
     getRoztsinka: async (req, res) => {
         try {
-            const populated = await Roztsinka.find()
-                .populate('operationId')
-                .populate('machineId')
-                .populate('typeId')
-                .populate('colorId')
-                .populate('asortument')
-                .populate('classId')
-                .populate('seasonId')
-                .populate('imageId')
-                .populate('sizeId')
-                .populate('articleId')
-                .populate('changesId')
-            res.send(populated);
+            const {search} = req.query;
+            if (search) {
+                const populated = await Roztsinka.find({name: {$regex: search}})
+                    .populate('operationId')
+                    .populate('machineId')
+                    .populate('typeId')
+                    .populate('colorId')
+                    .populate('asortument')
+                    .populate('classId')
+                    .populate('seasonId')
+                    .populate('imageId')
+                    .populate('sizeId')
+                    .populate('articleId')
+                    .populate('changesId')
+                res.send(populated);
+            } else {
+                const populated = await Roztsinka.find()
+                    .populate('operationId')
+                    .populate('machineId')
+                    .populate('typeId')
+                    .populate('colorId')
+                    .populate('asortument')
+                    .populate('classId')
+                    .populate('seasonId')
+                    .populate('imageId')
+                    .populate('sizeId')
+                    .populate('articleId')
+                    .populate('changesId')
+                res.send(populated);
+            }
         } catch (e) {
             console.log(e);
             res.sendStatus(400)
