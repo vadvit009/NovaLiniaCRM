@@ -1,4 +1,4 @@
-const {createMaterialsType, patchMaterialsType} = require("../../../controllers/dovidnyky/materials/type");
+const {createMaterialsType, patchMaterialsType, getMaterialsType} = require("../../../controllers/dovidnyky/materials/type");
 const app = require("express").Router();
 const {Dovidnyky} = require('../../../models')
 const {
@@ -8,7 +8,7 @@ const {
 const {readHelper, readByIdHelper, createHelper, deleteHelper, patchHelper} = require('../../../utils/CRUDhelper');
 const {roleAccess} = require('../../../utils/RoleHelper');
 
-app.get("/materials_type", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Materials.MaterialsType));
+app.get("/materials_type", verifyUserToken, roleAccess(["String2", "String1"]), getMaterialsType);
 
 app.get("/materials_type/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Materials.MaterialsType));
 

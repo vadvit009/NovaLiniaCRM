@@ -1,6 +1,14 @@
 const {Dovidnyky: {Materials: {MaterialsType}}} = require('../../../models');
 
 module.exports = {
+    getMaterialsType: async (req,res) => {
+        const data = await MaterialsType.find()
+            .populate('vendorId')
+            .populate('dilankaId')
+            .populate('paramsId')
+            .populate('changesId');
+        res.send(data);
+    },
     createMaterialsType: async (req, res) => {
         const {
             name,
@@ -34,7 +42,11 @@ module.exports = {
             dilankaId,
             paramsId,
             changesId: user._id
-        }, {new: true});
+        }, {new: true})
+            .populate('vendorId')
+            .populate('dilankaId')
+            .populate('paramsId')
+            .populate('changesId');
         res.send(updated);
     },
 }
