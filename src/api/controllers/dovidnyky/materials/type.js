@@ -1,13 +1,23 @@
 const {Dovidnyky: {Materials: {MaterialsType}}} = require('../../../models');
 
 module.exports = {
-    getMaterialsType: async (req,res) => {
-        const data = await MaterialsType.find()
-            .populate('vendorId')
-            .populate('dilankaId')
-            .populate('paramsId')
-            .populate('changesId');
-        res.send(data);
+    getMaterialsType: async (req, res) => {
+        const {search} = req.query;
+        if (search) {
+            const data = await MaterialsType.find({name: {$regex: search, $options: 'i'}})
+                .populate('vendorId')
+                .populate('dilankaId')
+                .populate('paramsId')
+                .populate('changesId');
+            res.send(data);
+        } else {
+            const data = await MaterialsType.find()
+                .populate('vendorId')
+                .populate('dilankaId')
+                .populate('paramsId')
+                .populate('changesId');
+            res.send(data);
+        }
     },
     createMaterialsType: async (req, res) => {
         const {

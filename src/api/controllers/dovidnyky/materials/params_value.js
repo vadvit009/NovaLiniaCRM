@@ -2,10 +2,18 @@ const {Dovidnyky: {Materials: {MaterialsParamsValue}}} = require('../../../model
 
 module.exports = {
     getMaterialsParamsValue: async (req, res) => {
-        const data = await MaterialsParamsValue.find()
-            .populate('paramId')
-            .populate('changesId');
-        res.send(data);
+        const {search} = req.query;
+        if (search) {
+            const data = await MaterialsParamsValue.find({name: {$regex: search}})
+                .populate('paramId')
+                .populate('changesId');
+            res.send(data);
+        } else {
+            const data = await MaterialsParamsValue.find()
+                .populate('paramId')
+                .populate('changesId');
+            res.send(data);
+        }
     },
     getOneMaterialsParamsValue: async (req, res) => {
         const {id} = req.params;
