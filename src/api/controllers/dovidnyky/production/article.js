@@ -4,7 +4,7 @@ module.exports = {
     getArticles: async (req, res) => {
         const {search} = req.query;
         if (search) {
-            const articles = await ProdArticle.find({$regex: {name: search}})
+            const articles = await ProdArticle.find({name: {$regex: search, $options: 'i'}})
                 .populate('typeId')
                 .populate('asortumentId')
                 .populate('imageId')
