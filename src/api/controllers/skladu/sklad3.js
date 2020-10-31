@@ -1,4 +1,5 @@
 const moment = require("moment");
+const {getNextSequence} = require("../../utils/getNextId");
 
 const {
     Skladu: {Sklad1, Sklad4, Sklad3, Sklad2},
@@ -11,13 +12,41 @@ module.exports = {
                 user,
                 formId,
                 date_prixod,
-                mishok
+
+                gatynok1,
+                gatynok2,
+                gatynok3,
+                typeId,
+                asortumentId,
+                imageId,
+                colorId,
+                sizeId,
+                seasonId,
+                classId,
+                articleId,
             } = req.body;
+
+            const mishok = await Mishku.create({
+                typeId,
+                asortumentId,
+                imageId,
+                colorId,
+                sizeId,
+                seasonId,
+                barcode: await getNextSequence('barcode'),
+                classId,
+                articleId,
+                date_prixod,
+                gatynok1,
+                gatynok2,
+                gatynok3,
+                changesId: user._id,
+            });
 
             const sklad3 = await Sklad3.create({
                 formId,
                 date_prixod,
-                mishok,
+                mishok: mishok._id,
                 changesId: user._id,
                 deletedAt: null
             });

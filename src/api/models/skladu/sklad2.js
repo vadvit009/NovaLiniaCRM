@@ -7,6 +7,7 @@ const Sklad2Schema = new Schema(
         sortId: {type: mongoose.ObjectId, ref: "Worker"},
         date_prixod: Date,
         date_rozsxodu: Date,
+        dilanka: Number,
 
         mishok: {type: mongoose.ObjectId, ref: "Mishku"},
         changesId: {type: mongoose.ObjectId, ref: "Users"},

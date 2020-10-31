@@ -41,6 +41,7 @@ module.exports = {
                 gatynok1,
                 gatynok2,
                 gatynok3,
+                changesId: user._id,
             });
 
             const sklad1 = await Sklad1.create({
@@ -54,7 +55,7 @@ module.exports = {
                 deletedAt: null
             });
 
-            res.send({mishokId: mishok._id, barcode:mishok.barcode});
+            res.send({mishokId: mishok._id, barcode: mishok.barcode});
         } catch (e) {
             console.log(e);
             res.sendStatus(400);
@@ -81,7 +82,7 @@ module.exports = {
             } = req.body;
             const {id} = req.params;
             const isDateRozxoduNull = await Sklad1.findById(id);
-            if (isDateRozxoduNull.date_rozsxodu) {
+            if (isDateRozxoduNull.date_rozsxodu === null) {
                 const updated = await Sklad1.findByIdAndUpdate(id, {
                     vyazalId,
                     masterId,
@@ -276,7 +277,7 @@ module.exports = {
     },
     zalushok: async (req, res) => {
         try {
-            const {day} = req.query;
+            const {day, mishok} = req.query;
             // const formattedStart = moment.unix(day / 1000).format('YYYY-MM-DD');
             // const formattedFinish = moment.unix(day / 1000).add(1, 'days').format('YYYY-MM-DD');
             const plusDay = moment(day).add(1, 'days').format('YYYY-MM-DD');
@@ -284,52 +285,100 @@ module.exports = {
             console.log(new Date(day))
             // console.log(new Date(formattedStart))
             // console.log(new Date(formattedFinish))
-            //TODO DELETE $GTE (DAY)
-            const agg = await Sklad1.find({
-                $and:
-                    [
-                        {date_prixod: {$lte: new Date(plusDay)}},
-                        {
-                            $or: [
-                                {date_rozxodu: {$lte: new Date(plusDay)}},
-                                {date_rozxodu: null},
-                            ]
-                        }
-                    ]
-            })
-                .populate({
-                    path: 'mishok',
-                    populate: {path: "asortumentId", select: "name -_id"}
+            if (mishok) {
+                const agg = await Sklad1.find({
+                    $and:
+                        [
+                            {mishok: mishok},
+                            {date_prixod: {$lte: new Date(plusDay)}},
+                            {
+                                $or: [
+                                    {date_rozxodu: {$lte: new Date(plusDay)}},
+                                    {date_rozxodu: null},
+                                ]
+                            },
+                        ]
                 })
-                .populate({
-                    path: 'mishok',
-                    populate: {path: "imageId", select: "name -_id"}
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "asortumentId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "imageId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "colorId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "typeId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "sizeId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "classId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "articleId", select: "name -_id"}
+                    })
+                    .populate('vyazalId')
+                    .populate('masterId')
+                    .populate('machineId')
+                    .populate({path: 'changesId', select: 'firstName'})
+                res.json(agg)
+            } else {
+                const agg = await Sklad1.find({
+                    $and:
+                        [
+                            {date_prixod: {$lte: new Date(plusDay)}},
+                            {
+                                $or: [
+                                    {date_rozxodu: {$lte: new Date(plusDay)}},
+                                    {date_rozxodu: null},
+                                ]
+                            }
+                        ]
                 })
-                .populate({
-                    path: 'mishok',
-                    populate: {path: "colorId", select: "name -_id"}
-                })
-                .populate({
-                    path: 'mishok',
-                    populate: {path: "typeId", select: "name -_id"}
-                })
-                .populate({
-                    path: 'mishok',
-                    populate: {path: "sizeId", select: "name -_id"}
-                })
-                .populate({
-                    path: 'mishok',
-                    populate: {path: "classId", select: "name -_id"}
-                })
-                .populate({
-                    path: 'mishok',
-                    populate: {path: "articleId", select: "name -_id"}
-                })
-                .populate('vyazalId')
-                .populate('masterId')
-                .populate('machineId')
-                .populate({path: 'changesId', select: 'firstName'})
-            res.json(agg)
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "asortumentId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "imageId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "colorId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "typeId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "sizeId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "classId", select: "name -_id"}
+                    })
+                    .populate({
+                        path: 'mishok',
+                        populate: {path: "articleId", select: "name -_id"}
+                    })
+                    .populate('vyazalId')
+                    .populate('masterId')
+                    .populate('machineId')
+                    .populate({path: 'changesId', select: 'firstName'})
+                res.json(agg)
+            }
         } catch (e) {
             console.log(e)
             res.sendStatus(400)

@@ -1,7 +1,7 @@
 const moment = require("moment");
 
 const {
-    Skladu: {Sklad1, Sklad4, Sklad3, Sklad2},
+    Skladu: {Sklad1, Sklad4, Sklad3, Sklad2}, Mishku
 } = require('../../models');
 
 module.exports = {
@@ -12,20 +12,47 @@ module.exports = {
                 sortId,
                 shveyaId,
                 date_prixod,
-                mishok
+
+                gatynok1,
+                gatynok2,
+                gatynok3,
+                typeId,
+                asortumentId,
+                imageId,
+                colorId,
+                sizeId,
+                seasonId,
+                classId,
+                articleId,
             } = req.body;
+
+            const mishok = await Mishku.create({
+                typeId,
+                asortumentId,
+                imageId,
+                colorId,
+                sizeId,
+                seasonId,
+                barcode: await getNextSequence('barcode'),
+                classId,
+                articleId,
+                date_prixod,
+                gatynok1,
+                gatynok2,
+                gatynok3,
+                changesId: user._id,
+            });
 
             const sklad2 = await Sklad2.create({
                 sortId,
                 shveyaId,
                 date_prixod,
                 date_rozsxodu: null,
-                mishok,
+                mishok: mishok._id,
                 changesId: user._id,
                 deletedAt: null
             });
-
-            res.send(sklad2);
+            res.send({mishokId: mishok._id, barcode:mishok.barcode});
         } catch (e) {
             console.log(e);
             res.sendStatus(400);

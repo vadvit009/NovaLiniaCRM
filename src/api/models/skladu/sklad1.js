@@ -6,6 +6,7 @@ const Sklad1Schema = new Schema(
         vyazalId: {type: mongoose.ObjectId, ref: "Worker"},
         masterId: {type: mongoose.ObjectId, ref: "Worker"},
         machineId: {type: mongoose.ObjectId, ref: "Machine"},
+        dilanka: Number,
         date_prixod: Date,
         date_rozsxodu: Date,
 
