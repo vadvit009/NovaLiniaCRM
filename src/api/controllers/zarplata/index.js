@@ -52,10 +52,10 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
                                                 //     }
                                                 // }
                                                 zp[sklad[personId]._id].zp += roz.price * sklad.mishok.gatynok2
-                                                zp[sklad[personId]._id].zminu = skladu.filter(skladById =>
+                                                const zminu = skladu.filter(skladById =>
                                                     skladById[personId].equals(sklad[personId]._id)
                                                 )
-                                                zp[sklad[personId]._id].zminu = new Set(zp[sklad[personId]._id].zminu.map(zmina => zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                                                zp[sklad[personId]._id].zminu = new Set(zminu.map(zmina => zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
                                                 zp[sklad[personId]._id].prod_quantity += sklad.mishok.gatynok2
                                             } else if (roz.gatynok === 3) {
                                                 // if (!zp[sklad[personId]._id]) {
@@ -129,13 +129,13 @@ module.exports = {
                 {
                     path: 'shveyaId',
                     populate:
-                        {path: 'operationId', options: {retainNullValues: true}}
+                        {path: 'operationId'}
                 }
             ).populate(
                 {
                     path: 'sortId',
                     populate:
-                        {path: 'operationId', options: {retainNullValues: true}}
+                        {path: 'operationId'}
                 }
             ).populate('mishok');
 
@@ -166,7 +166,7 @@ module.exports = {
                     options: {retainNullValues: true}
                 }
             );
-        res.json({zp_sklad2: zarplataHelper(['formId'], sklad3, roztsinka)})
+        res.json({zp_sklad3: zarplataHelper(['formId'], sklad3, roztsinka)})
     },
 
     zpSklad4: async (req, res) => {
@@ -175,18 +175,17 @@ module.exports = {
                 {
                     path: 'packId',
                     populate:
-                        {path: 'operationId', options: {retainNullValues: true}}
+                        {path: 'operationId'}
                 }
             ).populate('mishok');
 
         const roztsinka = await Roztsinka.find({})
             .populate(
                 {
-                    path: 'operationId',
-                    options: {retainNullValues: true}
+                    path: 'operationId'
                 }
             );
-        res.json({zp_sklad2: zarplataHelper(['packId'], sklad4, roztsinka)})
+        res.json({zp_sklad4: zarplataHelper(['packId'], sklad4, roztsinka)})
     },
 
     zpRest: async (req, res) => {

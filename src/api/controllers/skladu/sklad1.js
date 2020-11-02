@@ -77,18 +77,20 @@ module.exports = {
                 imageId,
                 colorId,
                 sizeId,
+                seasonId,
                 classId,
                 articleId,
             } = req.body;
             const {id} = req.params;
             const isDateRozxoduNull = await Sklad1.findById(id);
             if (isDateRozxoduNull.date_rozsxodu === null) {
-                const updated = await Sklad1.findByIdAndUpdate(id, {
+                const updated = await Mishku.findByIdAndUpdate(isDateRozxoduNull.mishok, {
                     vyazalId,
                     masterId,
                     machineId,
                     date_prixod,
                     gatynok1,
+                    seasonId,
                     gatynok2,
                     gatynok3,
                     typeId,
@@ -252,7 +254,7 @@ module.exports = {
                 .populate({path: 'changesId', select: 'firstName'})
             res.send(sklad1);
         } else {
-            const sklad1 = await Sklad1.find({date_rozsxodu: null})
+            const sklad1 = await Sklad1.find()
                 .populate({
                     path: 'mishok',
                     populate: {path: "asortumentId", select: "name -_id"}
