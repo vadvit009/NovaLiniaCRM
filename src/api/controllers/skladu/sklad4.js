@@ -1,4 +1,5 @@
 const moment = require("moment");
+const {getNextSequence} = require("../../utils/getNextId");
 
 const {
     Skladu: {Sklad1, Sklad4, Sklad3, Sklad2},
