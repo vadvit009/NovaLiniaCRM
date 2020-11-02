@@ -5,7 +5,6 @@ module.exports = {
     prixod: async (req, res) => {
         try {
             const {operationId, from, to} = req.query;
-            console.log(req.query)
             if (operationId && from && to) {
                 const prixod = await Zvitu.find({
                     date_rozxodu: null,
@@ -76,7 +75,7 @@ module.exports = {
                         {date_prixodu: {$lte: new Date(plusDay)}},
                         {
                             $or: [
-                                {date_rozxodu: {$lte: new Date(plusDay)}},
+                                {date_rozxodu: {$gte: new Date(plusDay)}},
                                 {date_rozxodu: null},
                             ]
                         }

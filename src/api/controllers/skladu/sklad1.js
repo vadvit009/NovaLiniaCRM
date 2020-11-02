@@ -110,40 +110,53 @@ module.exports = {
         }
     },
     rozxidToSklad2: async (req, res) => {
-        const {user, mishok, date_rozsxodu, shveyId, sortId} = req.body;
+        const {skladId, user, mishok, date_rozsxodu, shveyaId, sortId} = req.body;
         const rozxidSklad2 = await Sklad2.create({
             changesId: user._id,
             mishok,
-            date_rozsxodu,
-            shveyId,
+            date_rozsxodu: null,
+            shveyaId,
             sortId,
             createdAt: Date.now(),
             deletedAt: null
         });
+        const updatedSklad1 = await Sklad1.findByIdAndUpdate(skladId, {
+            dilanka: 2,
+            date_rozsxodu: date_rozsxodu
+        }, {new: true});
+        console.log(updatedSklad1)
         res.send(rozxidSklad2)
     },
     rozxidToSklad3: async (req, res) => {
-        const {user, mishok, date_rozsxodu, formId} = req.body;
+        const {skladId, user, mishok, date_rozsxodu, formId} = req.body;
         const rozxidSklad3 = await Sklad3.create({
             changesId: user._id,
             mishok,
-            date_rozsxodu,
+            date_rozsxodu: null,
             formId,
             createdAt: Date.now(),
             deletedAt: null
         });
+        const updatedSklad1 = await Sklad1.findByIdAndUpdate(skladId, {
+            dilanka: 3,
+            date_rozsxodu: date_rozsxodu
+        }, {new: true});
         res.send(rozxidSklad3)
     },
     rozxidToSklad4: async (req, res) => {
-        const {user, mishok, date_rozsxodu, packId} = req.body;
+        const {skladId, user, mishok, date_rozsxodu, packId} = req.body;
         const rozxidSklad4 = await Sklad4.create({
             changesId: user._id,
             mishok,
-            date_rozsxodu,
+            date_rozsxodu: null,
             packId,
             createdAt: Date.now(),
             deletedAt: null
         });
+        const updatedSklad1 = await Sklad1.findByIdAndUpdate(skladId, {
+            dilanka: 4,
+            date_rozsxodu: date_rozsxodu
+        }, {new: true});
         res.send(rozxidSklad4)
     },
 
@@ -239,7 +252,7 @@ module.exports = {
                 .populate({path: 'changesId', select: 'firstName'})
             res.send(sklad1);
         } else {
-            const sklad1 = await Sklad1.find({})
+            const sklad1 = await Sklad1.find({date_rozsxodu: null})
                 .populate({
                     path: 'mishok',
                     populate: {path: "asortumentId", select: "name -_id"}
@@ -383,5 +396,41 @@ module.exports = {
             console.log(e)
             res.sendStatus(400)
         }
+    },
+    getSingleSklad1: async (req, res) => {
+        const {id} = req.params;
+        const readed = await Sklad1.findById(id).populate({
+            path: 'mishok',
+            populate: {path: "asortumentId", select: "name -_id"}
+        })
+            .populate({
+                path: 'mishok',
+                populate: {path: "imageId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "colorId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "typeId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "sizeId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "classId", select: "name -_id"}
+            })
+            .populate({
+                path: 'mishok',
+                populate: {path: "articleId", select: "name -_id"}
+            })
+            .populate('vyazalId')
+            .populate('masterId')
+            .populate('machineId')
+            .populate({path: 'changesId', select: 'firstName'})
+        res.send(readed)
     }
 }
