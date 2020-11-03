@@ -217,10 +217,10 @@ module.exports = {
             const agg = await Sklad2.find({
                 $and:
                     [
-                        {date_prixod: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                        {date_prixod: {$lte: new Date(plusDay)}},
                         {
                             $or: [
-                                {date_rozxodu: {$gte: new Date(day), $lte: new Date(plusDay)}},
+                                {date_rozxodu: {$gte: new Date(day)}},
                                 {date_rozxodu: null},
                             ]
                         }

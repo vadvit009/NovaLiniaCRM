@@ -49,7 +49,7 @@ const readByIdHelper = (model) => {
 const deleteHelper = (model) => {
     return async (req, res) => {
         const {id} = req.params;
-        const deleted = await model.findById(id);
+        const deleted = await model.findByIdAndRemove(id);
         res.status(200).send(deleted);
     }
 }
