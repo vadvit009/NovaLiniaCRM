@@ -256,5 +256,108 @@ module.exports = {
             console.log(e)
             res.sendStatus(400)
         }
+    },
+    getSklad: async (req, res) => {
+        const {from, to, fromRozxod, toRozxod} = req.query;
+        if (from && to) {
+            const sklad2 = await Sklad4.find({date_prixod: {$gte: new Date(from), $lte: new Date(to)}})
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "asortumentId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "imageId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "colorId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "typeId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "sizeId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "classId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "articleId", select: "name -_id"}
+              })
+              .populate('packId')
+              .populate({path: 'changesId', select: 'firstName'})
+            res.send(sklad2);
+        } else if (fromRozxod && toRozxod) {
+            const sklad2 = await Sklad4.find({date_rozsxodu: {$gte: new Date(fromRozxod), $lte: new Date(toRozxod)}})
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "asortumentId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "imageId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "colorId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "typeId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "sizeId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "classId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "articleId", select: "name -_id"}
+              })
+              .populate('packId')
+              .populate({path: 'changesId', select: 'firstName'})
+            res.send(sklad2);
+        } else {
+            const sklad2 = await Sklad4.find({})
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "asortumentId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "imageId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "colorId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "typeId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "sizeId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "classId", select: "name -_id"}
+              })
+              .populate({
+                  path: 'mishok',
+                  populate: {path: "articleId", select: "name -_id"}
+              })
+              .populate('packId')
+              .populate({path: 'changesId', select: 'firstName'})
+            res.send(sklad2);
+        }
     }
 }

@@ -59,59 +59,119 @@ module.exports = {
       res.sendStatus(400);
     }
   },
+  // updateSklad2: async (req, res) => {
+  //   try {
+  //     const {
+  //       user,
+  //       sortId,
+  //       shveyaId,
+  //       date_prixod,
+  //
+  //       mishok
+  //     } = req.body;
+  //     const {id} = req.params;
+  //
+  //     const updated = await Sklad2.findByIdAndUpdate(id, {
+  //       user,
+  //       sortId,
+  //       shveyaId,
+  //       date_prixod,
+  //
+  //       mishok,
+  //       changesId: user._id,
+  //       updatedAt: Date.now(),
+  //       deletedAt: null
+  //     }, {new: true})
+  //     res.send(updated);
+  //   } catch (e) {
+  //     console.log(e);
+  //     res.sendStatus(400);
+  //   }
+  // },
+
   updateSklad2: async (req, res) => {
     try {
       const {
         user,
         sortId,
         shveyaId,
+        machineId,
         date_prixod,
-
-        mishok
+        gatynok1,
+        gatynok2,
+        gatynok3,
+        typeId,
+        asortumentId,
+        imageId,
+        colorId,
+        sizeId,
+        seasonId,
+        classId,
+        articleId,
       } = req.body;
       const {id} = req.params;
-
-      const updated = await Sklad1.findByIdAndUpdate(id, {
-        user,
-        sortId,
-        shveyaId,
-        date_prixod,
-
-        mishok,
-        changesId: user._id,
-        updatedAt: Date.now(),
-        deletedAt: null
-      })
-      res.send(updated);
+      const isDateRozxoduNull = await Sklad2.findById(id);
+      if (isDateRozxoduNull.date_rozsxodu === null) {
+        const updated = await Mishku.findByIdAndUpdate(isDateRozxoduNull.mishok, {
+          sortId,
+          shveyaId,
+          machineId,
+          date_prixod,
+          gatynok1,
+          seasonId,
+          gatynok2,
+          gatynok3,
+          typeId,
+          asortumentId,
+          imageId,
+          colorId,
+          sizeId,
+          classId,
+          articleId,
+          changesId: user._id,
+          updatedAt: Date.now(),
+          deletedAt: null
+        }, {new: true})
+        res.send(updated);
+      } else res.sendStatus(400);
     } catch (e) {
       console.log(e);
       res.sendStatus(400);
     }
   },
-
   rozxidToSklad3: async (req, res) => {
-    const {user, mishok, date_rozsxodu, formId} = req.body;
+    const {skladId, user, mishok, date_rozsxodu, formId} = req.body;
     const rozxidSklad3 = await Sklad3.create({
       changesId: user._id,
       mishok,
-      date_rozsxodu,
+      date_prixod: new Date(),
+      date_rozsxodu: null,
       formId,
       createdAt: Date.now(),
       deletedAt: null
     });
+    const updatedSklad2 = await Sklad2.findByIdAndUpdate(skladId, {
+      dilanka: 3,
+      date_rozsxodu: date_rozsxodu
+    }, {new: true});
     res.send(rozxidSklad3)
   },
 
   rozxidToSklad4: async (req, res) => {
-    const {user, mishok, date_rozsxodu, packId} = req.body;
+    const {skladId, user, mishok, date_rozsxodu, packId} = req.body;
     const rozxidSklad4 = await Sklad4.create({
       changesId: user._id,
       mishok,
-      date_rozsxodu,
+      date_prixod: new Date(),
+      date_rozsxodu: null,
       packId,
       createdAt: Date.now(),
       deletedAt: null
     });
+    const updatedSklad2 = await Sklad2.findByIdAndUpdate(skladId, {
+      dilanka: 4,
+      date_rozsxodu: date_rozsxodu
+    }, {new: true});
     res.send(rozxidSklad4)
   },
 
@@ -175,31 +235,31 @@ module.exports = {
       const sklad2 = await Sklad2.find({date_prixod: {$gte: new Date(from), $lte: new Date(to)}})
         .populate({
           path: 'mishok',
-          populate: {path: "asortumentId", select: "name -_id"}
+          populate: {path: "asortumentId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "imageId", select: "name -_id"}
+          populate: {path: "imageId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "colorId", select: "name -_id"}
+          populate: {path: "colorId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "typeId", select: "name -_id"}
+          populate: {path: "typeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "sizeId", select: "name -_id"}
+          populate: {path: "sizeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "classId", select: "name -_id"}
+          populate: {path: "classId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "articleId", select: "name -_id"}
+          populate: {path: "articleId", select: "name "}
         })
         .populate('shveyaId')
         .populate('sortId')
@@ -209,31 +269,31 @@ module.exports = {
       const sklad2 = await Sklad2.find({date_rozsxodu: {$gte: new Date(fromRozxod), $lte: new Date(toRozxod)}})
         .populate({
           path: 'mishok',
-          populate: {path: "asortumentId", select: "name -_id"}
+          populate: {path: "asortumentId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "imageId", select: "name -_id"}
+          populate: {path: "imageId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "colorId", select: "name -_id"}
+          populate: {path: "colorId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "typeId", select: "name -_id"}
+          populate: {path: "typeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "sizeId", select: "name -_id"}
+          populate: {path: "sizeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "classId", select: "name -_id"}
+          populate: {path: "classId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "articleId", select: "name -_id"}
+          populate: {path: "articleId", select: "name "}
         })
         .populate('shveyaId')
         .populate('sortId')
@@ -243,31 +303,31 @@ module.exports = {
       const sklad2 = await Sklad2.find({})
         .populate({
           path: 'mishok',
-          populate: {path: "asortumentId", select: "name -_id"}
+          populate: {path: "asortumentId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "imageId", select: "name -_id"}
+          populate: {path: "imageId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "colorId", select: "name -_id"}
+          populate: {path: "colorId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "typeId", select: "name -_id"}
+          populate: {path: "typeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "sizeId", select: "name -_id"}
+          populate: {path: "sizeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "classId", select: "name -_id"}
+          populate: {path: "classId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "articleId", select: "name -_id"}
+          populate: {path: "articleId", select: "name "}
         })
         .populate('shveyaId')
         .populate('sortId')
@@ -298,31 +358,31 @@ module.exports = {
           ]
       }).populate({
         path: 'mishok',
-        populate: {path: "asortumentId", select: "name -_id"}
+        populate: {path: "asortumentId", select: "name "}
       })
         .populate({
           path: 'mishok',
-          populate: {path: "imageId", select: "name -_id"}
+          populate: {path: "imageId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "colorId", select: "name -_id"}
+          populate: {path: "colorId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "typeId", select: "name -_id"}
+          populate: {path: "typeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "sizeId", select: "name -_id"}
+          populate: {path: "sizeId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "classId", select: "name -_id"}
+          populate: {path: "classId", select: "name "}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "articleId", select: "name -_id"}
+          populate: {path: "articleId", select: "name "}
         })
         .populate('shveyaId')
         .populate('sortId')
@@ -332,5 +392,69 @@ module.exports = {
       console.log(e)
       res.sendStatus(400)
     }
+  },
+  getSingle: async (req, res) => {
+    const {id} = req.params;
+    const sklad = await Sklad2.findById(id)
+      .populate({
+        path: 'mishok',
+        populate: {path: "asortumentId", select: "name "}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "imageId", select: "name "}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "colorId", select: "name "}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "typeId", select: "name "}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "sizeId", select: "name "}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "classId", select: "name "}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "articleId", select: "name "}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "seasonId", select: "name "}
+      })
+      .populate('shveyaId')
+      .populate('sortId')
+      .populate({path: 'changesId', select: 'firstName'});
+    res.send(sklad)
+  },
+  delete: async (req, res) => {
+    const {id} = req.params;
+    const deleted = await Sklad2.findByIdAndRemove(id);
+
+    if (deleted.dilanka === 3) {
+      const updated = await Sklad3.findOneAndUpdate(
+        {mishok: deleted.mishok},
+        {date_rozsxodu: null},
+        {new: true});
+      console.log("updated === ", updated)
+      console.log('deleted === ', deleted)
+      res.sendStatus(200)
+    }
+    if (deleted.dilanka === 4) {
+      const updated = await Sklad4.findOneAndUpdate(
+        {mishok: deleted.mishok},
+        {date_rozsxodu: null},
+        {new: true});
+      console.log("updated === ", updated)
+      console.log('deleted === ', deleted)
+      res.sendStatus(200)
+    }
+
   }
 }

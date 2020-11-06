@@ -9,16 +9,15 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
           skladArrayIds.map(personId => {
               sklad[personId].operationId.map(oper => {
                   if (roz.operationId._id.equals(oper._id)) {
-                    if ((roz.articleId === sklad.mishok.articleId || roz.articleId === null)
-                      && roz.machineId === sklad.mishok.machineId || roz.machineId === null
-                      && roz.typeId === sklad.mishok.typeId || roz.typeId === null
-                      && roz.colorId === sklad.mishok.colorId || roz.colorId === null
-                      && roz.asortument === sklad.mishok.asortument || roz.asortument === null
-                      && roz.classId === sklad.mishok.classId || roz.classId === null
-                      && roz.seasonId === sklad.mishok.seasonId || roz.seasonId === null
-                      && roz.imageId === sklad.mishok.imageId || roz.imageId === null
-                      && roz.sizeId === sklad.mishok.sizeId || roz.sizeId === null) {
-
+                    if ((roz.articleId.equals(sklad.mishok.articleId) || roz.articleId === null)
+                      && (roz.typeId.equals(sklad.mishok.typeId) || roz.typeId === null)
+                      && (roz.colorId.equals(sklad.mishok.colorId) || roz.colorId === null)
+                      && (roz.asortument.equals(sklad.mishok.asortumentId) || roz.asortument === null)
+                      && (roz.classId.equals(sklad.mishok.classId) || roz.classId === null)
+                      && (roz.seasonId.equals(sklad.mishok.seasonId) || roz.seasonId === null)
+                      && (roz.imageId.equals(sklad.mishok.imageId) || roz.imageId === null)
+                      && (roz.sizeId.equals(sklad.mishok.sizeId) || roz.sizeId === null)
+                    ) {
                       if (!zp[sklad[personId]._id]) {
                         zp[sklad[personId]._id] = {};
                         if (!zp[sklad[personId]._id].zp && !zp[sklad[personId]._id].prod_quantity && !zp[sklad[personId]._id].zminu) {
@@ -94,13 +93,13 @@ module.exports = {
           {
             path: 'vyazalId',
             populate:
-              {path: 'operationId', options: {retainNullValues: true}}
+              {path: 'operationId'}
           }
         ).populate(
           {
             path: 'masterId',
             populate:
-              {path: 'operationId', options: {retainNullValues: true}}
+              {path: 'operationId',}
           }
         ).populate('mishok');
 
@@ -112,8 +111,6 @@ module.exports = {
           }
         );
       const zp = zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka);
-      // const arrOfWorker = Object.keys(zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka)).map(id => ObjectId(id))
-      // const workers = await Worker.find({_id: {$in: arrOfWorker}});
       res.json({zp_sklad1: zp});
     } catch (e) {
       console.log(e);

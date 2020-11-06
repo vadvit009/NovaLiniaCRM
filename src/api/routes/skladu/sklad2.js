@@ -12,7 +12,7 @@ app.get("/sklad2", verifyUserToken, roleAccess(["String2", "String1"]), Sklad2.g
 
 app.get("/sklad2_zalushok", verifyUserToken, roleAccess(["String2", "String1"]), Sklad2.zalushok);
 
-app.get("/sklad2/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Skladu.Sklad2));
+app.get("/sklad2/:id", verifyUserToken, roleAccess(["String2", "String1"]), Sklad2.getSingle);
 
 app.post("/sklad2", verifyUserToken, roleAccess(["String2", "String1"]), Sklad2.pruxodSklad2);
 
@@ -26,6 +26,6 @@ app.patch("/sklad2_4/:id", verifyUserToken, roleAccess(["String2", "String1"]), 
 
 app.patch("/sklad2/:id", verifyUserToken, roleAccess(["String2", "String1"]), Sklad2.updateSklad2);
 
-app.delete("/sklad2/:id", verifyUserToken, roleAccess(["String2", "String1"]), deleteHelper(Skladu.Sklad2));
+app.delete("/sklad2/:id", verifyUserToken, roleAccess(["String2", "String1"]), Sklad2.delete);
 
 module.exports = app;

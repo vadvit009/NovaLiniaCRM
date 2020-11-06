@@ -129,5 +129,47 @@ module.exports = {
       console.log(e)
       res.sendStatus(400)
     }
+  },
+  getMaterials: async (req, res) => {
+    const {from, to, fromRozxod, toRozxod} = req.query;
+    if (from && to) {
+      const materials = await Materials.find({date_prixod: {$gte: new Date(from), $lte: new Date(to)}})
+        .populate('paramsValueId')
+        .populate('paramsId')
+        .populate('vendorId')
+        .populate('typeId')
+        .populate('dilankaId')
+        .populate('changesId')
+      res.send(materials);
+    } else if (fromRozxod && toRozxod) {
+      const materials = await Materials.find({date_rozxodu: {$gte: new Date(fromRozxod), $lte: new Date(toRozxod)}})
+        .populate('paramsValueId')
+        .populate('paramsId')
+        .populate('vendorId')
+        .populate('typeId')
+        .populate('dilankaId')
+        .populate('changesId')
+      res.send(materials);
+    } else {
+      const materials = await Materials.find()
+        .populate('paramsValueId')
+        .populate('paramsId')
+        .populate('vendorId')
+        .populate('typeId')
+        .populate('dilankaId')
+        .populate('changesId')
+      res.send(materials);
+    }
+  },
+  getSingleMaterials: async (req, res) => {
+    const {id} = req.params;
+    const materials = await Materials.findById(id)
+      .populate('paramsValueId')
+      .populate('paramsId')
+      .populate('vendorId')
+      .populate('typeId')
+      .populate('dilankaId')
+      .populate('changesId')
+    res.send(materials);
   }
 }

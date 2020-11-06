@@ -1,19 +1,19 @@
+const {singleZvit} = require("../../controllers/zvitu/get.controller");
 const app = require("express").Router();
-
 const {
-    verifyUserToken
+  verifyUserToken
 } = require("../../middleware/jwtAuth");
 
-const { zalushok, prixod, rozxodu, prixodZvitu, patchPruxodZvitu, rozxidZvitu, deleteRozxid } = require('../../controllers/zvitu');
-const { readByIdHelper, readHelper, deleteHelper } = require('../../utils/CRUDhelper')
+const {zalushok, prixod, rozxodu, prixodZvitu,  patchPruxodZvitu, rozxidZvitu, deleteRozxid} = require('../../controllers/zvitu');
+const {readByIdHelper, readHelper, deleteHelper} = require('../../utils/CRUDhelper')
 
-const { Zvitu } = require('../../models');
+const {Zvitu} = require('../../models');
 
 app.get("/zvitu", verifyUserToken, prixod);
 
 app.get("/zvitu_rozxid", verifyUserToken, rozxodu);
 
-app.get("/zvitu/:id", verifyUserToken, readByIdHelper(Zvitu));
+app.get("/zvitu/:id", verifyUserToken, singleZvit);
 
 app.post("/zvitu", verifyUserToken, prixodZvitu);
 

@@ -103,7 +103,7 @@ module.exports = {
           changesId: user._id,
           updatedAt: Date.now(),
           deletedAt: null
-        })
+        }, {new: true})
         res.send(updated);
       } else res.sendStatus(400);
     } catch (e) {
@@ -117,6 +117,7 @@ module.exports = {
       changesId: user._id,
       mishok,
       date_rozsxodu: null,
+      date_prixod:new Date(),
       shveyaId,
       sortId,
       createdAt: Date.now(),
@@ -134,6 +135,7 @@ module.exports = {
     const rozxidSklad3 = await Sklad3.create({
       changesId: user._id,
       mishok,
+      date_prixod:new Date(),
       date_rozsxodu: null,
       formId,
       createdAt: Date.now(),
@@ -150,6 +152,7 @@ module.exports = {
     const rozxidSklad4 = await Sklad4.create({
       changesId: user._id,
       mishok,
+      date_prixod:new Date(),
       date_rozsxodu: null,
       packId,
       createdAt: Date.now(),
@@ -222,31 +225,35 @@ module.exports = {
       const sklad1 = await Sklad1.find({date_prixod: {$gte: new Date(from), $lte: new Date(to)}})
         .populate({
           path: 'mishok',
-          populate: {path: "asortumentId", select: "name -_id"}
+          populate: {path: "asortumentId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "imageId", select: "name -_id"}
+          populate: {path: "imageId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "colorId", select: "name -_id"}
+          populate: {path: "colorId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "typeId", select: "name -_id"}
+          populate: {path: "typeId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "sizeId", select: "name -_id"}
+          populate: {path: "sizeId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "classId", select: "name -_id"}
+          populate: {path: "classId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "articleId", select: "name -_id"}
+          populate: {path: "seasonId", select: "name"}
+        })
+        .populate({
+          path: 'mishok',
+          populate: {path: "articleId", select: "name"}
         })
         .populate('vyazalId')
         .populate('masterId')
@@ -257,66 +264,74 @@ module.exports = {
       const sklad1 = await Sklad1.find({date_rozsxodu: {$gte: new Date(fromRozxod), $lte: new Date(toRozxod)}})
         .populate({
           path: 'mishok',
-          populate: {path: "asortumentId", select: "name -_id"}
+          populate: {path: "asortumentId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "imageId", select: "name -_id"}
+          populate: {path: "imageId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "colorId", select: "name -_id"}
+          populate: {path: "colorId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "typeId", select: "name -_id"}
+          populate: {path: "seasonId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "sizeId", select: "name -_id"}
+          populate: {path: "typeId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "classId", select: "name -_id"}
+          populate: {path: "sizeId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "articleId", select: "name -_id"}
+          populate: {path: "classId", select: "name"}
+        })
+        .populate({
+          path: 'mishok',
+          populate: {path: "articleId", select: "name"}
         })
         .populate('vyazalId')
         .populate('masterId')
         .populate('machineId')
         .populate({path: 'changesId', select: 'firstName'})
       res.send(sklad1);
-    }else {
+    } else {
       const sklad1 = await Sklad1.find({})
         .populate({
           path: 'mishok',
-          populate: {path: "asortumentId", select: "name -_id"}
+          populate: {path: "asortumentId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "imageId", select: "name -_id"}
+          populate: {path: "imageId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "colorId", select: "name -_id"}
+          populate: {path: "colorId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "typeId", select: "name -_id"}
+          populate: {path: "seasonId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "sizeId", select: "name -_id"}
+          populate: {path: "typeId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "classId", select: "name -_id"}
+          populate: {path: "sizeId", select: "name"}
         })
         .populate({
           path: 'mishok',
-          populate: {path: "articleId", select: "name -_id"}
+          populate: {path: "classId", select: "name"}
+        })
+        .populate({
+          path: 'mishok',
+          populate: {path: "articleId", select: "name"}
         })
         .populate('vyazalId')
         .populate('masterId')
@@ -351,31 +366,31 @@ module.exports = {
         })
           .populate({
             path: 'mishok',
-            populate: {path: "asortumentId", select: "name -_id"}
+            populate: {path: "asortumentId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "imageId", select: "name -_id"}
+            populate: {path: "imageId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "colorId", select: "name -_id"}
+            populate: {path: "colorId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "typeId", select: "name -_id"}
+            populate: {path: "typeId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "sizeId", select: "name -_id"}
+            populate: {path: "sizeId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "classId", select: "name -_id"}
+            populate: {path: "classId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "articleId", select: "name -_id"}
+            populate: {path: "articleId", select: "name"}
           })
           .populate('vyazalId')
           .populate('masterId')
@@ -397,31 +412,31 @@ module.exports = {
         })
           .populate({
             path: 'mishok',
-            populate: {path: "asortumentId", select: "name -_id"}
+            populate: {path: "asortumentId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "imageId", select: "name -_id"}
+            populate: {path: "imageId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "colorId", select: "name -_id"}
+            populate: {path: "colorId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "typeId", select: "name -_id"}
+            populate: {path: "typeId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "sizeId", select: "name -_id"}
+            populate: {path: "sizeId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "classId", select: "name -_id"}
+            populate: {path: "classId", select: "name"}
           })
           .populate({
             path: 'mishok',
-            populate: {path: "articleId", select: "name -_id"}
+            populate: {path: "articleId", select: "name"}
           })
           .populate('vyazalId')
           .populate('masterId')
@@ -438,31 +453,35 @@ module.exports = {
     const {id} = req.params;
     const readed = await Sklad1.findById(id).populate({
       path: 'mishok',
-      populate: {path: "asortumentId", select: "name -_id"}
+      populate: {path: "asortumentId", select: "name"}
     })
       .populate({
         path: 'mishok',
-        populate: {path: "imageId", select: "name -_id"}
+        populate: {path: "imageId", select: "name"}
       })
       .populate({
         path: 'mishok',
-        populate: {path: "colorId", select: "name -_id"}
+        populate: {path: "colorId", select: "name"}
       })
       .populate({
         path: 'mishok',
-        populate: {path: "typeId", select: "name -_id"}
+        populate: {path: "seasonId", select: "name"}
       })
       .populate({
         path: 'mishok',
-        populate: {path: "sizeId", select: "name -_id"}
+        populate: {path: "typeId", select: "name"}
       })
       .populate({
         path: 'mishok',
-        populate: {path: "classId", select: "name -_id"}
+        populate: {path: "sizeId", select: "name"}
       })
       .populate({
         path: 'mishok',
-        populate: {path: "articleId", select: "name -_id"}
+        populate: {path: "classId", select: "name"}
+      })
+      .populate({
+        path: 'mishok',
+        populate: {path: "articleId", select: "name"}
       })
       .populate('vyazalId')
       .populate('masterId')
