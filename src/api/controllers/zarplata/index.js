@@ -9,14 +9,14 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
           skladArrayIds.map(personId => {
               sklad[personId].operationId.map(oper => {
                   if (roz.operationId._id.equals(oper._id)) {
-                    if ((roz.articleId.equals(sklad.mishok.articleId) || roz.articleId === null)
-                      && (roz.typeId.equals(sklad.mishok.typeId) || roz.typeId === null)
-                      && (roz.colorId.equals(sklad.mishok.colorId) || roz.colorId === null)
-                      && (roz.asortument.equals(sklad.mishok.asortumentId) || roz.asortument === null)
-                      && (roz.classId.equals(sklad.mishok.classId) || roz.classId === null)
-                      && (roz.seasonId.equals(sklad.mishok.seasonId) || roz.seasonId === null)
-                      && (roz.imageId.equals(sklad.mishok.imageId) || roz.imageId === null)
-                      && (roz.sizeId.equals(sklad.mishok.sizeId) || roz.sizeId === null)
+                    if ((sklad.mishok.articleId.equals(roz.articleId) || roz.articleId === null)
+                      && (sklad.mishok.typeId.equals(roz.typeId) || roz.typeId === null)
+                      && (sklad.mishok.colorId.equals(roz.colorId) || roz.colorId === null)
+                      && (sklad.mishok.asortumentId.equals(roz.asortument) || roz.asortument === null)
+                      && (sklad.mishok.classId.equals(roz.classId) || roz.classId === null)
+                      && (sklad.mishok.seasonId.equals(roz.seasonId) || roz.seasonId === null)
+                      && (sklad.mishok.imageId.equals(roz.imageId) || roz.imageId === null)
+                      && (sklad.mishok.sizeId.equals(roz.sizeId) || roz.sizeId === null)
                     ) {
                       if (!zp[sklad[personId]._id]) {
                         zp[sklad[personId]._id] = {};
