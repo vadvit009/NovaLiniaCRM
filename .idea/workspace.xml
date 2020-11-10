@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +111,7 @@
       <workItem from="1604491680980" duration="9451000" />
       <workItem from="1604576820176" duration="7434000" />
       <workItem from="1604666087361" duration="13822000" />
-      <workItem from="1605007729016" duration="2919000" />
+      <workItem from="1605007729016" duration="3266000" />
     </task>
     <servers />
   </component>
