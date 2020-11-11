@@ -181,7 +181,7 @@ module.exports = {
   },
 
   zpRest: async (req, res) => {
-    const zvitu = await Zvitu.find({date_rozxodu: {$ne: null}})
+    const zvitu = await Zvitu.find({date_rozxodu: null})
       .populate('operationId')
       .populate({path: 'workerId', populate: {path: 'operationId'}})
       .populate('changesId');
@@ -193,7 +193,7 @@ module.exports = {
           options: {retainNullValues: true}
         }
       );
-
+    console.log(zvitu)
     const zp = {};
     zvitu.map(zvit => {
       roztsinka.map(roz => {

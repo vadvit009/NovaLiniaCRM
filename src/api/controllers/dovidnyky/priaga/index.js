@@ -73,9 +73,9 @@ module.exports = {
           Priaga.findByIdAndUpdate(item._id, {
             changesId: user._id,
             dilankaRozxodyId,
+            $inc: {quantity: -item.quantity},//todo check materials and add this
             date_rozxodu
           }, {new: true}).then(updatedPriaga => {
-            console.log('item.quantity === ', item.quantity)
             Priaga.create({
               ...updatedPriaga._doc,
               quantity: item.quantity,
@@ -116,7 +116,7 @@ module.exports = {
             {date_prixod: {$lte: new Date(plusDay)}},
             {
               $or: [
-                {date_rozxodu: {$gte: new Date(day)}},
+                {date_rozxodu: {$gte: new Date(plusDay)}},
                 {date_rozxodu: null},
               ]
             }
