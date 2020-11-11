@@ -22,6 +22,6 @@ app.patch("/sklad3_4/:id", verifyUserToken, roleAccess(["String2", "String1"]), 
 
 app.patch("/sklad3/:id", verifyUserToken, roleAccess(["String2", "String1"]), Sklad3.updateSklad3);
 
-app.delete("/sklad3/:id", verifyUserToken, roleAccess(["String2", "String1"]), deleteHelper(Skladu.Sklad3));
+app.delete("/sklad3/:id", verifyUserToken, roleAccess(["String2", "String1"]), Sklad3.delete);
 
 module.exports = app;

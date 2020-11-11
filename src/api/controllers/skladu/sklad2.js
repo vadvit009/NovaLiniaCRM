@@ -435,26 +435,11 @@ module.exports = {
   },
   delete: async (req, res) => {
     const {id} = req.params;
-    const deleted = await Sklad2.findByIdAndRemove(id);
-
-    if (deleted.dilanka === 3) {
-      const updated = await Sklad3.findOneAndUpdate(
-        {mishok: deleted.mishok},
-        {date_rozsxodu: null},
-        {new: true});
-      console.log("updated === ", updated)
-      console.log('deleted === ', deleted)
+    const {date_rozsxodu, mishok} = await Sklad2.findById(id);
+    if (!date_rozsxodu) {
+      await Sklad1.findOneAndUpdate({mishok}, {date_rozsxodu: null}, {new: true})
+      await Sklad2.findByIdAndRemove(id);
       res.sendStatus(200)
-    }
-    if (deleted.dilanka === 4) {
-      const updated = await Sklad4.findOneAndUpdate(
-        {mishok: deleted.mishok},
-        {date_rozsxodu: null},
-        {new: true});
-      console.log("updated === ", updated)
-      console.log('deleted === ', deleted)
-      res.sendStatus(200)
-    }
-
+    } else res.sendStatus(400)
   }
 }

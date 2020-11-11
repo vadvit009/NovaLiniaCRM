@@ -332,5 +332,14 @@ module.exports = {
         .populate({path: 'changesId', select: 'firstName'})
       res.send(sklad2);
     }
+  },
+  delete: async (req, res) => {
+    const {id} = req.params;
+    const {date_rozsxodu, mishok} = await Sklad3.findById(id);
+    if (!date_rozsxodu) {
+      await Sklad2.findOneAndUpdate({mishok}, {date_rozsxodu: null}, {new: true})
+      await Sklad3.findByIdAndRemove(id);
+      res.sendStatus(200)
+    } else res.sendStatus(400)
   }
 }
