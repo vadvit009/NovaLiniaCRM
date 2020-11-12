@@ -17,6 +17,7 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
                       && (sklad.mishok.seasonId.equals(roz.seasonId) || roz.seasonId === null)
                       && (sklad.mishok.imageId.equals(roz.imageId) || roz.imageId === null)
                       && (sklad.mishok.sizeId.equals(roz.sizeId) || roz.sizeId === null)
+                      && (+sklad.date_rozsxodu >= +roz.startDate && +sklad.date_rozsxodu <= +roz.endDate)
                     ) {
                       if (!zp[sklad[personId]._id]) {
                         zp[sklad[personId]._id] = {};
@@ -38,16 +39,6 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
                         zp[sklad[personId]._id].prod_quantity += sklad.mishok.gatynok1
 
                       } else if (roz.gatynok === 2) {
-                        // if (!zp[sklad[personId]._id]) {
-                        //     zp[sklad[personId]._id] = {};
-                        //     if (!zp[sklad[personId]._id].zp && !zp[sklad[personId]._id].prod_quantity && !zp[sklad[personId]._id].zminu) {
-                        //         zp[sklad[personId]._id] = {
-                        //             zp: 0,
-                        //             zminu: 0,
-                        //             prod_quantity: 0
-                        //         }
-                        //     }
-                        // }
                         zp[sklad[personId]._id].zp += roz.price * sklad.mishok.gatynok2
                         const filtered = skladu.filter(skladById =>
                           skladById[personId].equals(sklad[personId]._id))
@@ -55,17 +46,81 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
                         zp[sklad[personId]._id].zminu = zmina
                         zp[sklad[personId]._id].prod_quantity += sklad.mishok.gatynok2
                       } else if (roz.gatynok === 3) {
-                        // if (!zp[sklad[personId]._id]) {
-                        //     zp[sklad[personId]._id] = {};
-                        //     if (!zp[sklad[personId]._id].zp && !zp[sklad[personId]._id].prod_quantity && !zp[sklad[personId]._id].zminu) {
-                        //         zp[sklad[personId]._id] = {
-                        //             zp: 0,
-                        //             zminu: 0,
-                        //             prod_quantity: 0
-                        //         }
-                        //     }
-                        // }
                         zp[sklad[personId]._id].zp += roz.price * sklad.mishok.gatynok3
+                        const filtered = skladu.filter(skladById =>
+                          skladById[personId].equals(sklad[personId]._id))
+                        const zmina = new Set(filtered.map(zmina => zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                        zp[sklad[personId]._id].zminu = zmina
+                        zp[sklad[personId]._id].prod_quantity += sklad.mishok.gatynok3
+                      }
+                    }
+                  }
+                }
+              )
+            }
+          )
+        }
+      )
+    }
+  )
+  return zp
+}
+
+const zarplata1Helper = (skladArrayIds, skladu, roztsinka) => {
+  const zp = {};
+  skladu.map(sklad => {
+      roztsinka.map(roz => {
+          skladArrayIds.map(personId => {
+              sklad[personId].operationId.map(oper => {
+                  if (roz.operationId._id.equals(oper._id)) {
+                    // console.log('here', (+sklad.date_rozsxodu >= +roz.startDate && +sklad.date_rozsxodu <= +roz.endDate))
+                    if ((sklad.mishok.articleId.equals(roz.articleId) || roz.articleId === null)
+                      && (sklad.mishok.typeId.equals(roz.typeId) || roz.typeId === null)
+                      && (sklad.mishok.colorId.equals(roz.colorId) || roz.colorId === null)
+                      && (sklad.mishok.asortumentId.equals(roz.asortument) || roz.asortument === null)
+                      && (sklad.mishok.classId.equals(roz.classId) || roz.classId === null)
+                      && (sklad.mishok.seasonId.equals(roz.seasonId) || roz.seasonId === null)
+                      && (sklad.mishok.imageId.equals(roz.imageId) || roz.imageId === null)
+                      && (sklad.mishok.sizeId.equals(roz.sizeId) || roz.sizeId === null)
+                      && (sklad.machineId.equals(roz.machineId) || roz.machineId === null)
+                      && (+sklad.date_rozsxodu >= +roz.startDate && +sklad.date_rozsxodu <= +roz.endDate)
+                    ) {
+                      if (!zp[sklad[personId]._id]) {
+                        zp[sklad[personId]._id] = {};
+                        if (!zp[sklad[personId]._id].zp && !zp[sklad[personId]._id].prod_quantity && !zp[sklad[personId]._id].zminu) {
+                          zp[sklad[personId]._id] = {
+                            zp: 0,
+                            zminu: 0,
+                            prod_quantity: 0
+                          }
+                        }
+                      }
+                      if (roz.gatynok === 1) {
+
+                        zp[sklad[personId]._id].zp += roz.price * sklad.mishok.gatynok1
+                        const filtered = skladu.filter(skladById =>
+                          skladById[personId].equals(sklad[personId]._id))
+                        const zmina = new Set(filtered.map(zmina => zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                        zp[sklad[personId]._id].zminu = zmina
+                        zp[sklad[personId]._id].prod_quantity += sklad.mishok.gatynok1
+
+                      } else if (roz.gatynok === 2) {
+                        zp[sklad[personId]._id].zp += roz.price * sklad.mishok.gatynok2
+                        const filtered = skladu.filter(skladById =>
+                          skladById[personId].equals(sklad[personId]._id))
+                        const zmina = new Set(filtered.map(zmina => zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                        zp[sklad[personId]._id].zminu = zmina
+                        zp[sklad[personId]._id].prod_quantity += sklad.mishok.gatynok2
+
+                      } else if (roz.gatynok === 3) {
+                        zp[sklad[personId]._id].zp += roz.price * sklad.mishok.gatynok3
+                        const filtered = skladu.filter(skladById =>
+                          skladById[personId].equals(sklad[personId]._id))
+                        const zmina = new Set(filtered.map(zmina => zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
+                        zp[sklad[personId]._id].zminu = zmina
+                        zp[sklad[personId]._id].prod_quantity += sklad.mishok.gatynok3
+                      } else if (!roz.gatynok) {
+                        zp[sklad[personId]._id].zp += (roz.price * sklad.mishok.gatynok3 + roz.price * sklad.mishok.gatynok2 + roz.price * sklad.mishok.gatynok1)
                         const filtered = skladu.filter(skladById =>
                           skladById[personId].equals(sklad[personId]._id))
                         const zmina = new Set(filtered.map(zmina => zmina.createdAt.toJSON().slice(0, 10).split`-`.join``)).size
@@ -88,7 +143,10 @@ const zarplataHelper = (skladArrayIds, skladu, roztsinka) => {
 module.exports = {
   zpSklad1: async (req, res) => {
     try {
-      const sklad1 = await Sklad1.find({})
+      const date = new Date();
+      const firstDay = new Date(date.getFullYear(), date.getMonth(), 2);
+      const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+      const sklad1 = await Sklad1.find({date_rozsxodu: {$gte: firstDay, $lte: lastDay}})
         .populate(
           {
             path: 'vyazalId',
@@ -110,7 +168,8 @@ module.exports = {
             options: {retainNullValues: true}
           }
         );
-      const zp = zarplataHelper(['vyazalId', 'masterId'], sklad1, roztsinka);
+      // console.log(sklad1)
+      const zp = zarplata1Helper(['vyazalId', 'masterId'], sklad1, roztsinka);
       res.json({zp_sklad1: zp});
     } catch (e) {
       console.log(e);
@@ -119,7 +178,10 @@ module.exports = {
   },
 
   zpSklad2: async (req, res) => {
-    const sklad2 = await Sklad2.find({})
+    const date = new Date();
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 2);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    const sklad2 = await Sklad2.find({date_rozsxodu: {$gte: firstDay, $lte: lastDay}})
       .populate(
         {
           path: 'shveyaId',
@@ -145,7 +207,10 @@ module.exports = {
   },
 
   zpSklad3: async (req, res) => {
-    const sklad3 = await Sklad3.find({})
+    const date = new Date();
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 2);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    const sklad3 = await Sklad3.find({date_rozsxodu: {$gte: firstDay, $lte: lastDay}})
       .populate(
         {
           path: 'formId',
@@ -165,7 +230,10 @@ module.exports = {
   },
 
   zpSklad4: async (req, res) => {
-    const sklad4 = await Sklad4.find({})
+    const date = new Date();
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 2);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    const sklad4 = await Sklad4.find({date_rozsxodu: {$gte: firstDay, $lte: lastDay}})
       .populate(
         {
           path: 'packId',
@@ -181,7 +249,10 @@ module.exports = {
   },
 
   zpRest: async (req, res) => {
-    const zvitu = await Zvitu.find({date_rozxodu: null})
+    const date = new Date();
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 2);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+    const zvitu = await Zvitu.find({date_rozsxodu: {$gte: firstDay, $lte: lastDay}})
       .populate('operationId')
       .populate({path: 'workerId', populate: {path: 'operationId'}})
       .populate('changesId');

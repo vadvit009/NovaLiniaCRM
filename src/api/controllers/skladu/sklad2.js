@@ -351,8 +351,8 @@ module.exports = {
             {date_prixod: {$lte: new Date(plusDay)}},
             {
               $or: [
-                {date_rozxodu: {$gte: new Date(day)}},
-                {date_rozxodu: null},
+                {date_rozsxodu: {$gte: new Date(day)}},
+                {date_rozsxodu: null},
               ]
             }
           ]

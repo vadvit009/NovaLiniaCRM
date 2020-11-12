@@ -346,8 +346,9 @@ module.exports = {
       // const formattedStart = moment.unix(day / 1000).format('YYYY-MM-DD');
       // const formattedFinish = moment.unix(day / 1000).add(1, 'days').format('YYYY-MM-DD');
       const plusDay = moment(day).add(1, 'days').format('YYYY-MM-DD');
-      console.log(new Date(plusDay))
+      console.log('+ ====',new Date(plusDay))
       console.log(new Date(day))
+      const normalizeDate = new Date(day)
       // console.log(new Date(formattedStart))
       // console.log(new Date(formattedFinish))
       if (mishok) {
@@ -358,8 +359,8 @@ module.exports = {
               {date_prixod: {$lte: new Date(plusDay)}},
               {
                 $or: [
-                  {date_rozxodu: {$gte: new Date(plusDay)}},
-                  {date_rozxodu: null},
+                  {date_rozsxodu: {$gte: new Date(plusDay)}},
+                  {date_rozsxodu: null},
                 ]
               },
             ]
@@ -404,8 +405,8 @@ module.exports = {
               {date_prixod: {$lte: new Date(plusDay)}},
               {
                 $or: [
-                  {date_rozxodu: {$lte: new Date(plusDay)}},
-                  {date_rozxodu: null},
+                  {date_rozsxodu: {$gte: new Date(plusDay)}},
+                  {date_rozsxodu: null},
                 ]
               }
             ]
@@ -443,6 +444,18 @@ module.exports = {
           .populate('machineId')
           .populate({path: 'changesId', select: 'firstName'})
         res.json(agg)
+        console.log(await Sklad1.find({
+          $and:
+            [
+              {date_prixod: {$lte: new Date(day)}},
+              {
+                $or: [
+                  {date_rozsxodu: {$gte: new Date(plusDay)}},
+                  {date_rozsxodu: null},
+                ]
+              }
+            ]
+        }))
       }
     } catch (e) {
       console.log(e)

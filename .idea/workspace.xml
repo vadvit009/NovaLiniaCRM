@@ -21,11 +21,15 @@
   <component name="ChangeListManager">
     <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +59,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/api/controllers/dovidnyky/machines" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -119,7 +124,8 @@
       <workItem from="1604576820176" duration="7434000" />
       <workItem from="1604666087361" duration="13822000" />
       <workItem from="1605007729016" duration="3266000" />
-      <workItem from="1605096483622" duration="5103000" />
+      <workItem from="1605096483622" duration="5141000" />
+      <workItem from="1605183452583" duration="9565000" />
     </task>
     <servers />
   </component>
@@ -151,15 +157,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1602094481180" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1605192545081">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605192545081" />
     <state x="0" y="0" width="1638" height="732" key="dock-window-1" timestamp="1603737800341">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" width="1638" height="732" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1603737800341" />
-    <state x="667" y="253" width="585" height="624" key="find.popup" timestamp="1605113058345">
+    <state x="667" y="253" width="585" height="624" key="find.popup" timestamp="1605195517218">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="253" width="585" height="624" key="find.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1604600920252" />
-    <state x="667" y="253" width="585" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605113058345" />
+    <state x="667" y="253" width="585" height="624" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605195517218" />
     <state x="1096" y="242" key="run.anything.popup" timestamp="1604058923455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

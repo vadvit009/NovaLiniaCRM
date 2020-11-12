@@ -1,16 +1,16 @@
-const {patchMaterialsParams,createMaterialsParams} = require("../../../controllers/dovidnyky/materials/params");
+const {patchMaterialsParams, createMaterialsParams, getAllMaterialsParams, getSingleMaterialsParams} = require("../../../controllers/dovidnyky/materials/params");
 const app = require("express").Router();
 const {Dovidnyky} = require('../../../models')
 const {
-    verifyUserToken
+  verifyUserToken
 } = require("../../../middleware/jwtAuth");
 
 const {readHelper, readByIdHelper, createHelper, deleteHelper, patchHelper} = require('../../../utils/CRUDhelper');
 const {roleAccess} = require('../../../utils/RoleHelper');
 
-app.get("/materials_params", verifyUserToken, roleAccess(["String2", "String1"]), readHelper(Dovidnyky.Materials.MaterialsParams));
+app.get("/materials_params", verifyUserToken, roleAccess(["String2", "String1"]), getAllMaterialsParams);
 
-app.get("/materials_params/:id", verifyUserToken, roleAccess(["String2", "String1"]), readByIdHelper(Dovidnyky.Materials.MaterialsParams));
+app.get("/materials_params/:id", verifyUserToken, roleAccess(["String2", "String1"]), getSingleMaterialsParams);
 
 app.post("/materials_params", verifyUserToken, roleAccess(["String2", "String1"]), createMaterialsParams);
 

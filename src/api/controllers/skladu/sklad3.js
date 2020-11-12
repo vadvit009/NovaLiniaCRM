@@ -108,15 +108,20 @@ module.exports = {
     res.send(rozxidSklad3)
   },
   rozxidToSklad4: async (req, res) => {
-    const {user, mishok, date_rozsxodu, packId} = req.body;
+    const {skladId, user, mishok, date_rozsxodu, packId} = req.body;
     const rozxidSklad4 = await Sklad4.create({
       changesId: user._id,
       mishok,
-      date_rozsxodu,
+      date_prixod:new Date(),
+      date_rozsxodu: null,
       packId,
       createdAt: Date.now(),
       deletedAt: null
     });
+    const updatedSklad3 = await Sklad3.findByIdAndUpdate(skladId, {
+      dilanka: 4,
+      date_rozsxodu: date_rozsxodu
+    }, {new: true});
     res.send(rozxidSklad4)
   },
 
@@ -189,8 +194,8 @@ module.exports = {
             {date_prixod: {$lte: new Date(plusDay)}},
             {
               $or: [
-                {date_rozxodu: {$gte: new Date(day)}},
-                {date_rozxodu: null},
+                {date_rozsxodu: {$gte: new Date(day)}},
+                {date_rozsxodu: null},
               ]
             }
           ]
