@@ -21,15 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ca9d83da-8ab5-4c12-bd59-1b7bdcf58b50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/dovidnyky/materials/params_value.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad2.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad3.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/skladu/sklad4.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/controllers/zarplata/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/dovidnyky/materials/params.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/utils/CRUDhelper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/skladu/sklad1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/skladu/sklad1.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +120,8 @@
       <workItem from="1604666087361" duration="13822000" />
       <workItem from="1605007729016" duration="3266000" />
       <workItem from="1605096483622" duration="5141000" />
-      <workItem from="1605183452583" duration="9565000" />
+      <workItem from="1605183452583" duration="9746000" />
+      <workItem from="1605297084247" duration="5563000" />
     </task>
     <servers />
   </component>

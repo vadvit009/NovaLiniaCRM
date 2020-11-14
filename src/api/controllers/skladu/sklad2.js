@@ -112,6 +112,11 @@ module.exports = {
       const {id} = req.params;
       const isDateRozxoduNull = await Sklad2.findById(id);
       if (isDateRozxoduNull.date_rozsxodu === null) {
+        const updatedSklad = await Sklad2.findByIdAndUpdate(id, {
+          date_prixod,
+          sortId,
+          shveyaId,
+        }, {new: true})
         const updated = await Mishku.findByIdAndUpdate(isDateRozxoduNull.mishok, {
           sortId,
           shveyaId,
@@ -144,7 +149,7 @@ module.exports = {
     const rozxidSklad3 = await Sklad3.create({
       changesId: user._id,
       mishok,
-      date_prixod: new Date(),
+      date_prixod: date_rozsxodu,
       date_rozsxodu: null,
       formId,
       createdAt: Date.now(),
@@ -162,7 +167,7 @@ module.exports = {
     const rozxidSklad4 = await Sklad4.create({
       changesId: user._id,
       mishok,
-      date_prixod: new Date(),
+      date_prixod: date_rozsxodu,
       date_rozsxodu: null,
       packId,
       createdAt: Date.now(),
@@ -435,11 +440,37 @@ module.exports = {
   },
   delete: async (req, res) => {
     const {id} = req.params;
-    const {date_rozsxodu, mishok} = await Sklad2.findById(id);
+    const {date_rozsxodu, mishok, dilanka} = await Sklad2.findById(id);
     if (!date_rozsxodu) {
       await Sklad1.findOneAndUpdate({mishok}, {date_rozsxodu: null}, {new: true})
       await Sklad2.findByIdAndRemove(id);
       res.sendStatus(200)
+    } else if (date_rozsxodu) {
+      if (dilanka === 3) {
+        const toSklad3 = await Sklad3.findOne({mishok})
+        if (toSklad3 && toSklad3.date_rozsxodu) {
+          res.sendStatus(400)
+        } else if (toSklad3 && !toSklad3.date_rozsxodu) {
+          await Sklad2.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          await Sklad3.findOneAndRemove({mishok})
+          res.sendStatus(200)
+        } else {
+          await Sklad2.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          res.sendStatus(200)
+        }
+      } else if (dilanka === 4) {
+        const toSklad4 = await Sklad4.findOne({mishok})
+        if (toSklad4 && toSklad4.date_rozsxodu) {
+          res.sendStatus(400)
+        } else if (toSklad4 && !toSklad4.date_rozsxodu) {
+          await Sklad2.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          await Sklad4.findOneAndRemove({mishok})
+          res.sendStatus(200)
+        } else {
+          await Sklad2.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          res.sendStatus(200)
+        }
+      }
     } else res.sendStatus(400)
   }
 }

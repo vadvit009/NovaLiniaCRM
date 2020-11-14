@@ -112,7 +112,7 @@ module.exports = {
     const rozxidSklad4 = await Sklad4.create({
       changesId: user._id,
       mishok,
-      date_prixod:new Date(),
+      date_prixod: date_rozsxodu,
       date_rozsxodu: null,
       packId,
       createdAt: Date.now(),
@@ -345,6 +345,20 @@ module.exports = {
       await Sklad2.findOneAndUpdate({mishok}, {date_rozsxodu: null}, {new: true})
       await Sklad3.findByIdAndRemove(id);
       res.sendStatus(200)
+    } else if (date_rozsxodu) {
+      if (dilanka === 4) {
+        const toSklad4 = await Sklad4.findOne({mishok})
+        if (toSklad4 && toSklad4.date_rozsxodu) {
+          res.sendStatus(400)
+        } else if (toSklad4 && !toSklad4.date_rozsxodu) {
+          await Sklad3.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          await Sklad4.findOneAndRemove({mishok})
+          res.sendStatus(200)
+        } else {
+          await Sklad3.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          res.sendStatus(200)
+        }
+      }
     } else res.sendStatus(400)
   }
 }

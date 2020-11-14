@@ -84,6 +84,11 @@ module.exports = {
       const {id} = req.params;
       const isDateRozxoduNull = await Sklad1.findById(id);
       if (isDateRozxoduNull.date_rozsxodu === null) {
+        const updatedSklad = await Sklad1.findByIdAndUpdate(id, {
+          date_prixod,
+          vyazalId,
+          masterId,
+        }, {new: true})
         const updated = await Mishku.findByIdAndUpdate(isDateRozxoduNull.mishok, {
           vyazalId,
           masterId,
@@ -117,7 +122,7 @@ module.exports = {
       changesId: user._id,
       mishok,
       date_rozsxodu: null,
-      date_prixod:new Date(),
+      date_prixod: date_rozsxodu,
       shveyaId,
       sortId,
       createdAt: Date.now(),
@@ -135,7 +140,7 @@ module.exports = {
     const rozxidSklad3 = await Sklad3.create({
       changesId: user._id,
       mishok,
-      date_prixod:new Date(),
+      date_prixod: date_rozsxodu,
       date_rozsxodu: null,
       formId,
       createdAt: Date.now(),
@@ -152,7 +157,7 @@ module.exports = {
     const rozxidSklad4 = await Sklad4.create({
       changesId: user._id,
       mishok,
-      date_prixod:new Date(),
+      date_prixod: date_rozsxodu,
       date_rozsxodu: null,
       packId,
       createdAt: Date.now(),
@@ -346,7 +351,7 @@ module.exports = {
       // const formattedStart = moment.unix(day / 1000).format('YYYY-MM-DD');
       // const formattedFinish = moment.unix(day / 1000).add(1, 'days').format('YYYY-MM-DD');
       const plusDay = moment(day).add(1, 'days').format('YYYY-MM-DD');
-      console.log('+ ====',new Date(plusDay))
+      console.log('+ ====', new Date(plusDay))
       console.log(new Date(day))
       const normalizeDate = new Date(day)
       // console.log(new Date(formattedStart))
@@ -501,5 +506,51 @@ module.exports = {
       .populate('machineId')
       .populate({path: 'changesId', select: 'firstName'})
     res.send(readed)
+  },
+  delete: async (req, res) => {
+    const {id} = req.params;
+    const {date_rozsxodu, mishok, dilanka} = await Sklad1.findById(id);
+    if (!date_rozsxodu) {
+      await Sklad1.findByIdAndRemove(id);
+      res.sendStatus(200)
+    } else if (date_rozsxodu) {
+      if (dilanka === 3) {
+        const toSklad3 = await Sklad3.findOne({mishok})
+        if (toSklad3 && toSklad3.date_rozsxodu) {
+          res.sendStatus(400)
+        } else if (toSklad3 && !toSklad3.date_rozsxodu) {
+          await Sklad1.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          await Sklad3.findOneAndRemove({mishok})
+          res.sendStatus(200)
+        } else {
+          await Sklad1.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          res.sendStatus(200)
+        }
+      } else if (dilanka === 4) {
+        const toSklad4 = await Sklad4.findOne({mishok})
+        if (toSklad4 && toSklad4.date_rozsxodu) {
+          res.sendStatus(400)
+        } else if (toSklad4 && !toSklad4.date_rozsxodu) {
+          await Sklad1.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          await Sklad4.findOneAndRemove({mishok})
+          res.sendStatus(200)
+        } else {
+          await Sklad1.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          res.sendStatus(200)
+        }
+      } else if (dilanka === 2) {
+        const toSklad2 = await Sklad2.findOne({mishok})
+        if (toSklad2 && toSklad2.date_rozsxodu) {
+          res.sendStatus(400)
+        } else if (toSklad2 && !toSklad2.date_rozsxodu) {
+          await Sklad1.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          await Sklad2.findOneAndRemove({mishok})
+          res.sendStatus(200)
+        } else {
+          await Sklad1.findByIdAndUpdate(id, {date_rozsxodu: null}, {new: true});
+          res.sendStatus(200)
+        }
+      }
+    } else res.sendStatus(400)
   }
 }
